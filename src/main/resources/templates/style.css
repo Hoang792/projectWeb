@@ -1,89 +1,36 @@
-/* Tùy chỉnh chung */
-body {
-    background-color: #f8f9fa;
-}
-
 /* Navbar */
-.navbar {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Logo */
 .navbar-brand img {
-    max-width: 40px;
+    max-height: 40px;
     margin-right: 10px;
-}
-
-/* Tìm kiếm */
-.search-form {
-    width: 60%;  /* Tăng chiều rộng của thanh tìm kiếm */
 }
 
 .search-form input {
-    border-radius: 30px 0 0 30px;
+    width: 300px;
 }
 
-.search-form button {
-    border-radius: 0 30px 30px 0;
+/* Dropdown Menu */
+.navbar-nav .dropdown-menu {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-/* Giỏ hàng, Đăng nhập, Đăng ký */
-.navbar .btn {
-    margin-right: 10px;
-}
 
-/* Dropdown menu */
-.dropdown-menu {
-    background-color: #343a40;  /* Đổi màu nền của menu con */
-    border: none;
-}
-
-.dropdown-menu a {
-    color: #ffffff;  /* Đổi màu chữ của các mục trong menu con */
-}
-
-.dropdown-menu a:hover {
-    background-color: #495057;  /* Đổi màu nền khi hover vào mục */
-}
-
-/* Container chính */
-.container {
-    padding-top: 20px;
-}
-
-/* Nút và văn bản trong trang chính */
-h1 {
-    color: #343a40;
-}
-
+/* Main Content */
 .content-btn {
     background-color: #007bff;
     color: white;
-    border-radius: 30px;
     padding: 10px 20px;
-    transition: background-color 0.3s ease;
+    border-radius: 30px;
+    font-size: 1.2rem;
 }
 
 .content-btn:hover {
     background-color: #0056b3;
+    color: white;
 }
 
-@media (max-width: 768px) {
-    .navbar .btn {
-        margin-bottom: 5px;
-    }
-
-    .search-form {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-}
-
-/* Card Sản phẩm */
+/* Product Cards */
 .card {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -155,3 +102,22 @@ footer .fab:hover {
     font-size: 0.85rem;
 }
 
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .search-form input {
+        width: 200px;
+    }
+
+    .navbar-nav .dropdown-menu {
+        position: static;
+        float: none;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+}
