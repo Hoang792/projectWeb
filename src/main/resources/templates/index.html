@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Onilne</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link to Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
+            <img src="https://capvirgo.com/wp-content/uploads/2017/11/logo-3.png" alt="Logo">
+
+        </a>
+        <!-- Tìm kiếm -->
+        <form class="d-flex search-form mx-auto">
+            <input class="form-control me-2" type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
+        </form>
+        <!-- Giỏ hàng và Đăng nhập/Đăng ký -->
+        <div class="d-flex">
+            <a class="btn btn-outline-secondary" href="#">Giỏ hàng</a>
+            <a class="btn btn-outline-primary" href="#">Đăng nhập</a>
+            <a class="btn btn-outline-primary" href="#">Đăng ký</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Navbar với danh mục con -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Thời trang
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                        <li><a class="dropdown-item" href="#">Nam</a></li>
+                        <li><a class="dropdown-item" href="#">Nữ</a></li>
+                        <li><a class="dropdown-item" href="#">Trẻ em</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Điện tử
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                        <li><a class="dropdown-item" href="#">Điện thoại</a></li>
+                        <li><a class="dropdown-item" href="#">Laptop</a></li>
+                        <li><a class="dropdown-item" href="#">Phụ kiện</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Gia dụng
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                        <li><a class="dropdown-item" href="#">Đồ nhà bếp</a></li>
+                        <li><a class="dropdown-item" href="#">Đồ gia đình</a></li>
+                        <li><a class="dropdown-item" href="#">Vệ sinh nhà cửa</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sách & Văn phòng phẩm
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink4">
+                        <li><a class="dropdown-item" href="#">Sách giáo khoa</a></li>
+                        <li><a class="dropdown-item" href="#">Sách tham khảo</a></li>
+                        <li><a class="dropdown-item" href="#">Văn phòng phẩm</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Khuyến mãi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Liên hệ</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Nội dung trang -->
+<div class="container mt-4">
+    <h1>Welcome to our shop!</h1>
+    <p>Khám phá hàng ngàn sản phẩm với giá ưu đãi!</p>
+    <button class="content-btn">Mua ngay</button>
+
+    <!-- Thêm phần sản phẩm -->
+    <div class="row mt-5">
+        <!-- Sản phẩm 1 -->
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card h-100">
+                <img src="https://capvirgo.com/wp-content/uploads/2024/08/giay-mlb-tre-em_23-300x300.jpg?v=1723532802" class="card-img-top" alt="Product 1">
+                <div class="card-body">
+                    <h5 class="card-title">GIÀY MLB NY TRẺ EM MÀU TRẮNG HỌA TIẾT GẤU RED SOX</h5>
+                    <p class="card-text">Giá: 500,000 VND</p>
+                    <a href="#" class="btn btn-primary">Mua ngay</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sản phẩm 2 -->
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card h-100">
+                <img src="https://capvirgo.com/wp-content/uploads/2024/08/giay-mlb-tre-em_14.jpg?v=1723532429" class="card-img-top" alt="Product 2">
+                <div class="card-body">
+                    <h5 class="card-title">GIÀY MLB NY TRẺ EM MÀU TRẮNG HOẠT TIẾT ANGELS</h5>
+                    <p class="card-text">Giá: 700,000 VND</p>
+                    <a href="#" class="btn btn-primary">Mua ngay</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sản phẩm 3 -->
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card h-100">
+                <img src="https://capvirgo.com/wp-content/uploads/2024/08/giay-mlb-tre-em_11.jpg?v=1723532078" class="card-img-top" alt="Product 3">
+                <div class="card-body">
+                    <h5 class="card-title">GIÀY MLB NY TRẺ EM MÀU ĐEN</h5>
+                    <p class="card-text">Giá: 800,000 VND</p>
+                    <a href="#" class="btn btn-primary">Mua ngay</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sản phẩm 4 -->
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card h-100">
+                <img src="https://capvirgo.com/wp-content/uploads/2024/08/giay-mlb-tre-em_6.jpg?v=1723531491" class="card-img-top" alt="Product 4">
+                <div class="card-body">
+                    <h5 class="card-title">Sản phẩm 4</h5>
+                    <p class="card-text">Giá: 900,000 VND</p>
+                    <a href="#" class="btn btn-primary">Mua ngay</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white mt-5">
+    <div class="container">
+        <div class="row py-4">
+            <!-- Cột 1: Thông tin liên hệ -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <h5>Thông tin liên hệ</h5>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận 1, TP. HCM</p>
+                <p><i class="fas fa-phone"></i> 0981.706.588</p>
+                <p><i class="fas fa-envelope"></i> capvirgo2h@gmail.com</p>
+            </div>
+
+            <!-- Cột 2: Liên kết hữu ích -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <h5>Liên kết hữu ích</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white">Giới thiệu</a></li>
+                    <li><a href="#" class="text-white">Điều khoản sử dụng</a></li>
+                    <li><a href="#" class="text-white">Chính sách bảo mật</a></li>
+                    <li><a href="#" class="text-white">Liên hệ</a></li>
+                </ul>
+            </div>
+
+            <!-- Cột 3: Theo dõi chúng tôi -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <h5>Theo dõi chúng tôi</h5>
+                <a href="#" class="text-white me-4"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="text-white me-4"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white me-4"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white me-4"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="bg-secondary text-center py-3">
+        <p class="mb-0">&copy; Copyright © 2017 Capvirgo.com - All Rights Reserved.</p>
+    </div>
+</footer>
+
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

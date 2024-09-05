@@ -1,0 +1,157 @@
+/* Tùy chỉnh chung */
+body {
+    background-color: #f8f9fa;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.navbar-brand img {
+    max-width: 40px;
+    margin-right: 10px;
+}
+
+/* Tìm kiếm */
+.search-form {
+    width: 60%;  /* Tăng chiều rộng của thanh tìm kiếm */
+}
+
+.search-form input {
+    border-radius: 30px 0 0 30px;
+}
+
+.search-form button {
+    border-radius: 0 30px 30px 0;
+}
+
+/* Giỏ hàng, Đăng nhập, Đăng ký */
+.navbar .btn {
+    margin-right: 10px;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    background-color: #343a40;  /* Đổi màu nền của menu con */
+    border: none;
+}
+
+.dropdown-menu a {
+    color: #ffffff;  /* Đổi màu chữ của các mục trong menu con */
+}
+
+.dropdown-menu a:hover {
+    background-color: #495057;  /* Đổi màu nền khi hover vào mục */
+}
+
+/* Container chính */
+.container {
+    padding-top: 20px;
+}
+
+/* Nút và văn bản trong trang chính */
+h1 {
+    color: #343a40;
+}
+
+.content-btn {
+    background-color: #007bff;
+    color: white;
+    border-radius: 30px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.content-btn:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .navbar .btn {
+        margin-bottom: 5px;
+    }
+
+    .search-form {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Card Sản phẩm */
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    border-radius: 15px 15px 0 0;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.card .btn {
+    border-radius: 30px;
+    padding: 5px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.card .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+}
+
+footer h5 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+footer p, footer a {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+footer a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer .fab {
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+footer .fab:hover {
+    color: #007bff;
+}
+
+.bg-secondary {
+    background-color: #23272b !important;
+}
+
+.bg-secondary p {
+    color: #ddd;
+    font-size: 0.85rem;
+}
+
