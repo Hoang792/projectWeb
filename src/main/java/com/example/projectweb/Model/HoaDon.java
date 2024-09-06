@@ -31,7 +31,7 @@ public class HoaDon {
     @Column (name = "tongTien")
     private BigDecimal tongtien;
 
-    @Column (name = "trangthai ")
+    @Column (name = "trangthai")
    private String trangthai;
 
     @ManyToOne
