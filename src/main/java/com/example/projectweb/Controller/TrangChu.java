@@ -12,6 +12,10 @@ public class TrangChu {
     public String home(Model model) {
         return "index";
     }
+    @GetMapping("/dangnhap")
+    public String DangNhapCoTaiKhoan(Model model) {
 
+        return "index";
+    }
 }
 
