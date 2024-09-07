@@ -1,6 +1,7 @@
 package com.example.projectweb.Controller;
 
 import com.example.projectweb.Service.MauService;
+import com.example.projectweb.Service.SizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,7 @@ import java.util.List;
 public class TrangChu {
 
     @Autowired
+    private SizeService sizeService;
     private MauService mauService;
 
     @GetMapping("/trangchu")
@@ -27,6 +29,12 @@ public class TrangChu {
     public String mau(Model model) {
         model.addAttribute("mau", mauService.getAllMaus());
         return "quanlymau";
+    }
+
+    @GetMapping("/qlySize")
+    public String size(Model model) {
+        model.addAttribute("size", sizeService.getAllSizes() );
+        return "quanlysize";
     }
 }
 
