@@ -18,6 +18,6 @@ public class thuonghieu {
     @Column(name = "idthuonghieu")
     private Integer idthuonghieu;
 
-    @Column(name = "tenthuonghieu")
+    @Column(name = "tenthuonghieu",columnDefinition = "nvarchar(255)")
     private String tenthuonghieu;
 }

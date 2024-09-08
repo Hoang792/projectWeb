@@ -4,9 +4,10 @@ import com.example.projectweb.Model.sanphamchitiet;
 import com.example.projectweb.Repository.SanPhamChiTietRepository;
 import com.example.projectweb.Service.SanPhamChitietService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class SanPhamChiTietIMPL implements SanPhamChitietService {
 
 

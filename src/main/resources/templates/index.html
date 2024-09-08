@@ -43,11 +43,12 @@
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link active" href="#">Trang chủ</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button">Thời trang</a>
+                    <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink1" role="button">Danh mục sản phẩm</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-                        <li><a class="dropdown-item" href="#">Nam</a></li>
-                        <li><a class="dropdown-item" href="#">Nữ</a></li>
-                        <li><a class="dropdown-item" href="#">Trẻ em</a></li>
+                        <li th:each="ThuongHieu : ${ThuongHieu}">
+                            <a class="dropdown-item" th:text="${ThuongHieu.tenthuonghieu}" ></a>
+                        </li>
+
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -88,18 +89,34 @@
     <button class="content-btn">Mua ngay</button>
 
     <!-- Hiển thị sản phẩm -->
-    <div class="row mt-5">
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-            <div class="card h-100">
-                <img src="https://capvirgo.com/wp-content/uploads/2024/08/giay-mlb-tre-em_23-300x300.jpg?v=1723532802" class="card-img-top" alt="Product 1">
+    <div class="row">
+        <div class="col-md-3 mb-4" th:each="sp : ${sanpham}">
+            <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Sản phẩm 1</h5>
-                    <p class="card-text">Giá: 500,000 VND</p>
-                    <a href="#" class="btn btn-primary">Mua ngay</a>
+                    <div class="card-body-sp">
+
+                        <img th:src="@{'/image/' + ${sp.hinhAnh}}"
+                             class="card-img-top img-thumbnail product"/>
+                    </div>
+                    <div class="card-body-mota">
+                        <h5 class="card-title" th:text="${sp.tensp}"></h5>
+                        <p class="card-text">
+                            <span th:text="${sp.gia}"></span>
+                            <span style="color: red;">VNĐ</span>
+                        </p>
+
+
+<!--                        <a th:href="@{/edit?id={id}(id=${maytinh.id})}">-->
+<!--                            <box-icon name='edit'></box-icon>-->
+<!--                        </a>-->
+<!--                        <a th:href="@{/delete?id={id}(id=${maytinh.id})}">-->
+<!--                            <box-icon name='trash'></box-icon>-->
+<!--                        </a>-->
+                    </div>
+
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 

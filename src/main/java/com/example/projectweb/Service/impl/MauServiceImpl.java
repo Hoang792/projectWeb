@@ -1,4 +1,4 @@
-package com.example.projectweb.Service.impl;
+package com.example.projectweb.Service.IMPL;
 
 import com.example.projectweb.Model.mau;
 import com.example.projectweb.Repository.MauRepository;

@@ -39,15 +39,15 @@ public class sanphamchitiet {
     @Column(name = "gia")
     private BigDecimal gia;
 
-    @Column(name = "mota")
+    @Column(name = "mota",columnDefinition = "nvarchar(255)")
     private String mota;
 
-    @Column(name = "hinhanh")
+    @Column(name = "hinhanh",columnDefinition = "nvarchar(255)")
     private String hinhAnh;
 
     @Column(name = "ngaythem")
     private Date ngayThem;
 
-    @Column(name = "tensp")
+    @Column(name = "tensp",columnDefinition = "nvarchar(255)")
     private String tensp;
 }
