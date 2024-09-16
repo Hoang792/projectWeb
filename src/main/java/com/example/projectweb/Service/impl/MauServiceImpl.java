@@ -21,6 +21,13 @@ public class MauServiceImpl implements MauService {
     }
 
     @Override
+    public void saveMau(mau maus){mauRepository.save(maus);
+    }
+    @Override
+    public void deleteMau(Long id) {
+        mauRepository.deleteById(id);
+    }
+    @Override
     public Optional<mau> findMauByIdmau(Long idmau) {
         return mauRepository.findById(idmau);
     }
