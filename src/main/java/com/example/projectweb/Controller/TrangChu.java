@@ -78,7 +78,7 @@ public class TrangChu {
     ) throws IOException {
 
         mauService.saveMau(maus);
-        return "trangquanly";
+        return "redirect:/qlyMau";
     }
 
     //sửa
