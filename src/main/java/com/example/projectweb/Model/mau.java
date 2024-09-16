@@ -19,6 +19,6 @@ public class mau {
     @Column(name = "idmau")
     private Integer idmau;
 
-    @Column(name = "tenmau")
+    @Column(name = "tenmau",columnDefinition = "nvarchar(255)")
     private String tenmau;
 }

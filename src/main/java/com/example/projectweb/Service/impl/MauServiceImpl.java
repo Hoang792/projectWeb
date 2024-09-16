@@ -1,4 +1,4 @@
-package com.example.projectweb.Service.impl;
+package com.example.projectweb.Service.IMPL;
 
 import com.example.projectweb.Model.mau;
 import com.example.projectweb.Repository.MauRepository;
@@ -20,6 +20,13 @@ public class MauServiceImpl implements MauService {
         return (List<mau>) mauRepository.findAll();
     }
 
+    @Override
+    public void saveMau(mau maus){mauRepository.save(maus);
+    }
+    @Override
+    public void deleteMau(Long id) {
+        mauRepository.deleteById(id);
+    }
     @Override
     public Optional<mau> findMauByIdmau(Long idmau) {
         return mauRepository.findById(idmau);

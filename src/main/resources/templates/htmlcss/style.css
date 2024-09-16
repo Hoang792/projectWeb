@@ -1,0 +1,164 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Navbar */
+.navbar-brand img {
+    height: 50px;
+}
+
+.search-form input {
+    width: 300px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #000;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}
+
+/* Dropdown on hover */
+.navbar-nav .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* Giữ vị trí của menu */
+}
+
+.navbar-nav .dropdown-toggle::after {
+    transition: transform 0.15s linear;
+}
+
+.navbar-nav .dropdown:hover .dropdown-toggle::after {
+    transform: rotate(180deg); /* Xoay mũi tên khi hover */
+}
+
+.dropdown-menu {
+    margin-top: 0; /* Điều chỉnh khoảng cách từ nút đến menu */
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* Main Content */
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.content-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.content-btn:hover {
+    background-color: #218838;
+}
+
+/* Product Cards */
+.card {
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.card-text {
+    color: #555;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+}
+
+footer h5 {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+}
+
+footer p {
+    margin-bottom: 10px;
+    color: #bbb;
+}
+
+footer a {
+    color: #bbb;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #fff;
+}
+
+footer .bg-secondary {
+    background-color: #6c757d;
+}
+
+footer .fab {
+    font-size: 1.5rem;
+}
+
+footer .fab:hover {
+    color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search-form input {
+        width: 200px;
+    }
+
+    .navbar-brand img {
+        height: 40px;
+    }
+
+    .content-btn {
+        width: 100%;
+    }
+
+    .card-img-top {
+        height: 150px;
+    }
+}

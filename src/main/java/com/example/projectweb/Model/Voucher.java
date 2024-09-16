@@ -20,7 +20,7 @@ public class Voucher {
     @Column(name = "idVoucher")
     private Integer idVoucher;
     @Column(name = "tenVoucher")
-    private String tenVoucher;
+    private String tenvoucher;
     @Column(name = "ngayBatDau")
     private Date ngayBatDau;
     @Column(name = "ngayKetThuc")
