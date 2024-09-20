@@ -41,6 +41,7 @@
             <li class="nav-item"><a class="nav-link" href="#">Quản lý người dùng</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Quản lý hóa đơn</a></li>
             <li class="nav-item"><a class="nav-link" href="/quanlysize">Quản lý size</a></li>
+            <li class="nav-item"><a class="nav-link" href="/quanlythuonghieu">Quản lý thương hiệu</a></li>
             <li class="nav-item"><a class="nav-link" href="/qlyMau">Quản lý màu</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Doanh thu</a></li>
         </ul>
@@ -55,7 +56,7 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>ID màu</th>
+
                     <th>Tên màu</th>
                     <th>Chức năng</th>
                 </tr>
@@ -63,11 +64,12 @@
                 <tbody>
 
                 <tr th:each="mau : ${mau}">
-                    <td th:text="${mau.idmau}"></td>
+
                     <td th:text="${mau.tenmau}"></td>
                     <td>
                         <a th:href="@{/edit(idmau=${mau.idmau})}" class="btn btn-primary">Sửa</a>
-                        <a th:href="@{/delete(idmau=${mau.idmau})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?');">Xóa</a>
+                        <a th:href="@{/delete(idmau=${mau.idmau})}"
+                           class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?');">Xóa</a>
                     </td>
                 </tr>
                 </tbody>

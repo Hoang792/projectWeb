@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface SizeRepository extends CrudRepository<size, Integer> {
     List<size> findByKichthuocContainingIgnoreCase(String query);
+
+
+
 }

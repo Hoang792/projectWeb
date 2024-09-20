@@ -25,13 +25,13 @@ public class SanPhamChiTietIMPL implements SanPhamChitietService {
     }
 
     @Override
-    public void deleteById(Integer id) {
-        sanPhamChiTietRepository.deleteById(id);
+    public void deleteById(Long id) {
+        sanPhamChiTietRepository.deleteById(Math.toIntExact(id));
     }
 
     @Override
-    public sanphamchitiet findById(Integer id) {
-        return sanPhamChiTietRepository.findById(id).orElse(null);
+    public sanphamchitiet findById(Long id) {
+        return sanPhamChiTietRepository.findById(Math.toIntExact(id)).orElse(null);
     }
 
     @Override

@@ -15,8 +15,8 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="https://capvirgo.com/wp-content/uploads/2017/11/logo-3.png" alt="Logo">
+    <a class="navbar-brand" href="#" >
+      <img  src="https://capvirgo.com/wp-content/uploads/2017/11/logo-3.png" alt="Logo">
     </a>
     <form class="d-flex search-form mx-auto">
       <input class="form-control me-2" type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
@@ -42,9 +42,9 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button" data-bs-toggle="dropdown">Thời trang</a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-            <li><a class="dropdown-item" href="#">Nam</a></li>
-            <li><a class="dropdown-item" href="#">Nữ</a></li>
-            <li><a class="dropdown-item" href="#">Trẻ em</a></li>
+            <li th:each="ThuongHieu : ${ThuongHieu}">
+              <a class="dropdown-item" th:text="${ThuongHieu.tenthuonghieu}" ></a>
+            </li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -85,47 +85,39 @@
   <button class="content-btn">Mua ngay</button>
 
   <!-- Hiển thị sản phẩm -->
-  <div class="row mt-5">
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <img src="https://capvirgo.com/wp-content/uploads/2024/08/giay-mlb-tre-em_23-300x300.jpg?v=1723532802" class="card-img-top" alt="Product 1">
+  <div class="row">
+    <div class="col-md-3 mb-4" th:each="sp : ${sanpham}">
+      <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Sản phẩm 1</h5>
-          <p class="card-text">Giá: 500,000 VND</p>
-          <a href="#" class="btn btn-primary">Mua ngay</a>
+          <div class="card-body-sp">
+
+            <img th:src="@{'/image/' + ${sp.hinhAnh}}"
+                 class="card-img-top img-thumbnail product"/>
+          </div>
+          <div class="card-body-mota">
+            <h5 class="card-title" th:text="${sp.tensp}"></h5>
+            <p class="card-text">
+              <span th:text="${sp.gia}"></span>
+              <span style="color: red;">VNĐ</span>
+            </p>
+
+
+            <!--                        <a th:href="@{/edit?id={id}(id=${maytinh.id})}">-->
+            <!--                            <box-icon name='edit'></box-icon>-->
+            <!--                        </a>-->
+            <!--                        <a th:href="@{/delete?id={id}(id=${maytinh.id})}">-->
+            <!--                            <box-icon name='trash'></box-icon>-->
+            <!--                        </a>-->
+          </div>
+
         </div>
       </div>
     </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <img src="https://capvirgo.com/wp-content/uploads/2024/08/giay-mlb-tre-em_14.jpg?v=1723532429" class="card-img-top" alt="Product 2">
-        <div class="card-body">
-          <h5 class="card-title">Sản phẩm 2</h5>
-          <p class="card-text">Giá: 700,000 VND</p>
-          <a href="#" class="btn btn-primary">Mua ngay</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <img src="https://capvirgo.com/wp-content/uploads/2024/08/giay-mlb-tre-em_11.jpg?v=1723532078" class="card-img-top" alt="Product 3">
-        <div class="card-body">
-          <h5 class="card-title">Sản phẩm 3</h5>
-          <p class="card-text">Giá: 800,000 VND</p>
-          <a href="#" class="btn btn-primary">Mua ngay</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-      <div class="card h-100">
-        <img src="https://capvirgo.com/wp-content/uploads/2024/08/giay-mlb-tre-em_6.jpg?v=1723531491" class="card-img-top" alt="Product 4">
-        <div class="card-body">
-          <h5 class="card-title">Sản phẩm 4</h5>
-          <p class="card-text">Giá: 900,000 VND</p>
-          <a href="#" class="btn btn-primary">Mua ngay</a>
-        </div>
-      </div>
-    </div>
+  </div>
+</div>
+
+
+
   </div>
 </div>
 

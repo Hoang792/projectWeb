@@ -21,6 +21,18 @@ public class SizeServiceImpl implements SizeService {
     }
 
     @Override
+    public void saveSize(size size) {
+        sizeRepository.save(size);
+    }
+
+    @Override
+    public void deleteSize(Long id) {
+        sizeRepository.deleteById(Math.toIntExact(id));
+
+    }
+
+
+    @Override
     public Optional<size> findSizeByIdsize(Integer idsize) {
         return sizeRepository.findById(idsize);
     }
@@ -29,4 +41,7 @@ public class SizeServiceImpl implements SizeService {
     public List<size> searchSizes(String query) {
         return sizeRepository.findByKichthuocContainingIgnoreCase(query);
     }
+
+
+
 }

@@ -2,9 +2,11 @@ package com.example.projectweb.Controller;
 
 import com.example.projectweb.Model.mau;
 import com.example.projectweb.Model.sanphamchitiet;
+import com.example.projectweb.Model.size;
 import com.example.projectweb.Model.thuonghieu;
 import com.example.projectweb.Service.MauService;
 import com.example.projectweb.Service.SanPhamChitietService;
+import com.example.projectweb.Service.SizeService;
 import com.example.projectweb.Service.thuonghieuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -30,6 +32,10 @@ public class TrangChu {
     private MauService mauService;
     @Autowired
     private SanPhamChitietService sanPhamChitietService;
+    @Autowired
+    private SizeService sizeService;
+    @Autowired
+    private thuonghieuService thuonghieuservice;
 
     private final String UPLOAD_DIR = "src/main/resources/image/";
 
@@ -41,8 +47,7 @@ public class TrangChu {
         return "quanlysanpham";
     }
 
-    @Autowired
-    private thuonghieuService thuonghieuservice;
+
 
     @GetMapping("/trangchu")
     public String home(Model model) {
@@ -67,21 +72,47 @@ public class TrangChu {
         return "quanlymau";
     }
 
-    //thêm
+    //thêm màu
     @GetMapping("/add")
     public String addPhoneForm(Model model) {
         model.addAttribute("maus", new mau());
         return "viewThem";
     }
+
+    // thêm sản phẩm
+    @GetMapping("/addSanPham")
+    public String addSanPham(Model model) {
+        model.addAttribute("sanpham", new sanphamchitiet());
+        // lấy danh sách thương hiệu đổ vào view Thêm sản phẩm :
+        List<thuonghieu> ThuongHieuList = thuonghieuservice.getAllThuongHieus();
+        model.addAttribute("ThuongHieu", ThuongHieuList);
+        // lấy danh sách size
+        List<size>SizeList = sizeService.getAllSizes();
+        model.addAttribute("Size", SizeList);
+        //lấy danh sách màu
+        List<mau>MauList = mauService.getAllMaus();
+        model.addAttribute("Mau", MauList);
+
+        return "viewThemSanPham";
+    }
+
+    //lưu sản phẩm
+    @PostMapping("/saveSanPham")
+    public String saveSanPham(@ModelAttribute("sanpham") sanphamchitiet sanpham
+    ) throws IOException {
+        sanPhamChitietService.save(sanpham);
+        return "redirect:/quanlysanpham";
+    }
+
+    // lưu màu
     @PostMapping("/save")
     public String saveMau(@ModelAttribute("mau") mau maus
     ) throws IOException {
-
         mauService.saveMau(maus);
-        return "trangquanly";
+        return "redirect:/qlyMau";
     }
 
-    //sửa
+    //sửa màu
     @GetMapping("/edit")
     public String editMau(@RequestParam("idmau") Long idmau, Model model) {
         Optional<mau> mau = mauService.findMauByIdmau(idmau);
@@ -89,21 +120,28 @@ public class TrangChu {
         return "viewSua";
     }
 
+    // update màu
     @PostMapping("/update")
     public String updateMau(@ModelAttribute("phone") mau maus
-                              ) throws IOException {
+    ) throws IOException {
 
         mauService.saveMau(maus);
         return "redirect:/qlyMau";
     }
 
-    //xóa
+    //xóa màu
     @GetMapping("/delete")
     public String deleteMau(@RequestParam("idmau") Long idmau) {
         mauService.deleteMau(idmau);
         return "redirect:/qlyMau";
     }
 
+    // xóa sản phẩm
+    @GetMapping("/deleteSanPham")
+    public String deleteSanPham(@RequestParam("idsanpham") Long idsanpham) {
+        sanPhamChitietService.deleteById(idsanpham);
+        return "redirect:/quanlysanpham";
+    }
 
     //hình ảnh :
     @GetMapping("/image/{hinhAnh}")
