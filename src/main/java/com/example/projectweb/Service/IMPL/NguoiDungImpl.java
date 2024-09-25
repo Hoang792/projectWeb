@@ -40,7 +40,7 @@ public class NguoiDungImpl implements NguoiDungService {
     }
 
     @Override
-    public List<NguoiDung> findAllByTenContaining(String ten) {
-        return nguoiDungRepository.findAllByTenContaining(ten);
+    public List<NguoiDung> findAllBytenNguoiDungContaining(String tenNguoiDung) {
+        return nguoiDungRepository.findAllBytenNguoiDungContaining(tenNguoiDung);
     }
 }

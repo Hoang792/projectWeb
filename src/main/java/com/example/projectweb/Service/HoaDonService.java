@@ -9,5 +9,5 @@ public interface HoaDonService {
     void save(HoaDon hoaDon);
     void deleteById(Integer id);
     HoaDon findById(Integer id);
-    List<HoaDon> findAllByTrangThaiContaining(String trangThai);
+    List<HoaDon> findAllBytrangthaiContaining(String trangthai);
 }

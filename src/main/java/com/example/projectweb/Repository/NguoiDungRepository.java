@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface NguoiDungRepository extends JpaRepository<NguoiDung, Integer> {
     NguoiDung findByEmail(String email);
-    List<NguoiDung> findAllByTenContaining(String ten);
+    List<NguoiDung> findAllBytenNguoiDungContaining(String tenNguoiDung);
 }

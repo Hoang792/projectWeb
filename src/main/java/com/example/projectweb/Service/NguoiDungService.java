@@ -10,5 +10,5 @@ public interface NguoiDungService {
     void deleteById(Integer id);
     NguoiDung findById(Integer id);
     NguoiDung findByEmail(String email);
-    List<NguoiDung> findAllByTenContaining(String ten);
+    List<NguoiDung> findAllBytenNguoiDungContaining(String tenNguoiDung);
 }

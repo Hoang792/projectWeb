@@ -35,7 +35,7 @@ public class HoaDonImpl implements HoaDonService {
     }
 
     @Override
-    public List<HoaDon> findAllByTrangThaiContaining(String trangThai) {
-        return hoaDonRepository.findAllByTrangThaiContaining(trangThai);
+    public List<HoaDon> findAllBytrangthaiContaining(String trangthai) {
+        return hoaDonRepository.findAllBytrangthaiContaining(trangthai);
     }
 }
