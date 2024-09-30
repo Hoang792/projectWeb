@@ -56,10 +56,7 @@ public class SizeController {
     @PostMapping("/updateSize")
     public String updateMau(@ModelAttribute("size") size size
     ) throws IOException {
-
         sizeService.saveSize(size);
         return "redirect:/quanlysize";
     }
-
-
 }

@@ -28,6 +28,7 @@ import java.util.Optional;
 
 @Controller
 public class TrangChu {
+
     @Autowired
     private MauService mauService;
     @Autowired
@@ -46,9 +47,6 @@ public class TrangChu {
         model.addAttribute("sanpham", sanPhamChitietService.findAll());
         return "quanlysanpham";
     }
-
-
-
     @GetMapping("/trangchu")
     public String home(Model model) {
         //hiện danh sách sản phẩm :
@@ -60,18 +58,15 @@ public class TrangChu {
         model.addAttribute("ThuongHieu", thuonghieuservice.getAllThuongHieus());
         return "index";
     }
-
     @GetMapping("/trangqly")
     public String qly(Model model) {
         return "trangquanly";
     }
-
     @GetMapping("/qlyMau")
     public String mau(Model model) {
         model.addAttribute("mau", mauService.getAllMaus());
         return "quanlymau";
     }
-
     //thêm màu
     @GetMapping("/add")
     public String addPhoneForm(Model model) {

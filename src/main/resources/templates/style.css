@@ -120,4 +120,12 @@ footer .fab:hover {
     .card-text {
         font-size: 0.9rem;
     }
+
+}
+/*Giỏi hàng */
+.icon-gioihang{
+    padding-top: 10px ;
+}
+.ms-3{
+    padding-top: 10px !important;
 }

@@ -1,0 +1,9 @@
+###
+GET http://localhost:8080/cart
+
+<> 2024-09-26T232338.404.json
+
+###
+GET http://localhost/cart
+
+###

@@ -27,7 +27,7 @@
 </head>
 <body>
 <div class="container col-8">
-  <h1>Chỉnh sửa màu</h1>
+  <h1>Chỉnh sửa kích thước </h1>
   <form th:object="${size}" th:action="@{/updateSize}" method="post" enctype="multipart/form-data">
     <input type="hidden" th:field="*{idsize}">
 
@@ -35,7 +35,6 @@
       <label th:text="'Name'" th:for="name"></label>
       <input type="text" th:field="*{kichthuoc}" class="form-control" placeholder="Enter size name" required/>
     </div>
-
     <div class="text-center">
       <input type="submit" class="btn btn-success" value="Save"/>
       <a href="trangqly" class="btn btn-secondary ml-2">Cancel</a>
