@@ -15,6 +15,11 @@ public class KhuyenMaiImpl implements KhuyenMaiService {
     private KhuyenMaiRepository khuyenMaiRepository;
 
     @Override
+    public List<KhuyenMai> getAllKhuyenMais() {
+        return (List<KhuyenMai>) khuyenMaiRepository.findAll();
+    }
+
+    @Override
     public List<KhuyenMai> findAll() {
         return khuyenMaiRepository.findAll();
     }

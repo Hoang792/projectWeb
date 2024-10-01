@@ -15,6 +15,11 @@ public class HoaDonImpl implements HoaDonService {
     private HoaDonRepository hoaDonRepository;
 
     @Override
+    public List<HoaDon> getAllHoaDons() {
+        return (List<HoaDon>) hoaDonRepository.findAll();
+    }
+
+    @Override
     public List<HoaDon> findAll() {
         return hoaDonRepository.findAll();
     }

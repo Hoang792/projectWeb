@@ -1,8 +1,10 @@
 package com.example.projectweb.Controller;
 
+import com.example.projectweb.Model.HoaDon;
 import com.example.projectweb.Model.mau;
 import com.example.projectweb.Model.sanphamchitiet;
 import com.example.projectweb.Model.thuonghieu;
+import com.example.projectweb.Service.HoaDonService;
 import com.example.projectweb.Service.MauService;
 import com.example.projectweb.Service.SanPhamChitietService;
 import com.example.projectweb.Service.thuonghieuService;
@@ -30,6 +32,8 @@ public class TrangChu {
     private MauService mauService;
     @Autowired
     private SanPhamChitietService sanPhamChitietService;
+    @Autowired
+    private HoaDonService hoaDonService;
 
     private final String UPLOAD_DIR = "src/main/resources/image/";
 
@@ -65,6 +69,12 @@ public class TrangChu {
     public String mau(Model model) {
         model.addAttribute("mau", mauService.getAllMaus());
         return "quanlymau";
+    }
+
+    @GetMapping("/qlyHoaDon")
+    public String hoadon(Model model) {
+        model.addAttribute("HoaDon", hoaDonService.getAllHoaDons());
+        return "quanlyhoadon";
     }
 
     //thêm
@@ -103,6 +113,7 @@ public class TrangChu {
         mauService.deleteMau(idmau);
         return "redirect:/qlyMau";
     }
+
 
 
     //hình ảnh :

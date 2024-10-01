@@ -15,6 +15,11 @@ public class QuyenImpl implements QuyenService {
     private QuyenRepository quyenRepository;
 
     @Override
+    public List<Quyen> getAllQuyens() {
+        return (List<Quyen>) quyenRepository.findAll();
+    }
+
+    @Override
     public List<Quyen> findAll() {
         return quyenRepository.findAll();
     }

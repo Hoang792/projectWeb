@@ -1,26 +1,44 @@
 package com.example.projectweb.Model;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.example.projectweb.Model.QuanLyNguoiDungId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
+
+
+import java.io.Serializable;
 
 @Entity
-@Table(name = "quanlynguoidung")
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-public class QuanLyNguoiDung {
+@IdClass(QuanLyNguoiDungId.class) // Ánh xạ khóa chính phức hợp
+public class QuanLyNguoiDung implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ManyToOne
-    @JoinColumn(name = "idNguoiDung")
-    private NguoiDung idNguoiDung;
+    private Integer idNguoiDung;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ManyToOne
-    @JoinColumn(name = "idQuyen")
-    private Quyen idQuyen;
+    private Integer idQuyen;
+
+    public QuanLyNguoiDung() {
+    }
+
+    public QuanLyNguoiDung(Integer idNguoiDung, Integer idQuyen) {
+        this.idNguoiDung = idNguoiDung;
+        this.idQuyen = idQuyen;
+    }
+
+    public Integer getIdNguoiDung() {
+        return idNguoiDung;
+    }
+
+    public void setIdNguoiDung(Integer idNguoiDung) {
+        this.idNguoiDung = idNguoiDung;
+    }
+
+    public Integer getIdQuyen() {
+        return idQuyen;
+    }
+
+    public void setIdQuyen(Integer idQuyen) {
+        this.idQuyen = idQuyen;
+    }
 }

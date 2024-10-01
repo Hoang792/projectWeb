@@ -20,6 +20,11 @@ public class NguoiDungImpl implements NguoiDungService {
     }
 
     @Override
+    public List<NguoiDung> getAllNguoiDungs() {
+        return (List<NguoiDung>) nguoiDungRepository.findAll();
+    }
+
+    @Override
     public void save(NguoiDung nguoiDung) {
         nguoiDungRepository.save(nguoiDung);
     }

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Quản lý hóa đơn</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            background-color: #0b7bec;
+            color: white;
+            height: 100vh;
+            padding: 20px;
+        }
+        .sidebar a {
+            color: white;
+        }
+
+        .nav-item {
+            margin-bottom: 20px;
+        }
+        .sidebar a:hover {
+            text-decoration: none;
+            color: #ffc107;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="d-flex">
+    <div class="sidebar">
+        <h2>Chức năng</h2>
+        <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="/trangquanly">Trang chủ</a></li>
+            <li class="nav-item"><a class="nav-link" href="/quanlysanpham">Quản lý sản phẩm</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Quản lý khuyến mãi</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Quản lý người dùng</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Quản lý hóa đơn</a></li>
+            <li class="nav-item"><a class="nav-link" href="/quanlysize">Quản lý size</a></li>
+            <li class="nav-item"><a class="nav-link" href="/qlyMau">Quản lý màu</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Doanh thu</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1 class="mt-4">QUẢN LÝ HÓA ĐƠN</h1>
+        <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Tìm kiếm hóa đơn">
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>ID Hóa Đơn</th>
+                    <th>Người Dùng</th>
+                    <th>Ngày Lập</th>
+                    <th>Tổng Tiền</th>
+                    <th>Trạng Thái</th>
+                    <th>Khuyến Mãi</th>
+                    <th>Voucher</th>
+                    <th>Chức năng</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="hoadon : ${HoaDon}">
+                    <td th:text="${hoadon.idhd}"></td>
+                    <td th:text="${hoadon.idnguoidung.tenNguoiDung}"></td>
+                    <td th:text="${#dates.format(hoadon.ngaylap, 'dd/MM/yyyy')}"></td>
+                    <td th:text="${hoadon.tongtien}"></td>
+                    <td th:text="${hoadon.trangthai}"></td>
+                    <td th:text="${hoadon.khuyenmai.tenKhuyenMai}"></td>
+                    <td th:text="${hoadon.voucher.tenVoucher}"></td>
+                    <td>
+                        <a th:href="@{/edit(idHD=${hoadon.idhd})}" class="btn btn-primary">Sửa</a>
+                        <a th:href="@{/delete(idHD=${hoadon.idhd})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?');">Xóa</a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+            <div class="text-center">
+                <a href="/add" class="btn btn-success">Thêm hóa đơn mới</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

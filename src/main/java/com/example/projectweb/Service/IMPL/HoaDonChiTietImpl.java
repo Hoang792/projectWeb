@@ -1,5 +1,6 @@
 package com.example.projectweb.Service.impl;
 
+import com.example.projectweb.Model.HoaDon;
 import com.example.projectweb.Model.hoadonchitiet;
 import com.example.projectweb.Repository.HoaDonChiTietRepository;
 import com.example.projectweb.Service.HoaDonChiTietService;
@@ -13,6 +14,11 @@ public class HoaDonChiTietImpl implements HoaDonChiTietService {
 
     @Autowired
     private HoaDonChiTietRepository hoaDonChiTietRepository;
+
+    @Override
+    public List<hoadonchitiet> getAllHoaDonChiTiets() {
+        return (List<hoadonchitiet>) hoaDonChiTietRepository.findAll();
+    }
 
     @Override
     public List<hoadonchitiet> findAll() {

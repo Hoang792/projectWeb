@@ -5,6 +5,7 @@ import com.example.projectweb.Model.KhuyenMai;
 import java.util.List;
 
 public interface KhuyenMaiService {
+    List<KhuyenMai> getAllKhuyenMais();
     List<KhuyenMai> findAll();
     void save(KhuyenMai khuyenMai);
     void deleteById(Integer id);
