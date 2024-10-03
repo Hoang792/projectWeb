@@ -1,13 +1,11 @@
 package com.example.projectweb.Controller;
 
+import com.example.projectweb.Model.hoadonchitiet;
 import com.example.projectweb.Model.HoaDon;
 import com.example.projectweb.Model.mau;
 import com.example.projectweb.Model.sanphamchitiet;
 import com.example.projectweb.Model.thuonghieu;
-import com.example.projectweb.Service.HoaDonService;
-import com.example.projectweb.Service.MauService;
-import com.example.projectweb.Service.SanPhamChitietService;
-import com.example.projectweb.Service.thuonghieuService;
+import com.example.projectweb.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -34,7 +32,10 @@ public class TrangChu {
     private SanPhamChitietService sanPhamChitietService;
     @Autowired
     private HoaDonService hoaDonService;
-
+    @Autowired
+    private HoaDonChiTietService hoaDonChiTietService;
+    @Autowired
+    private KhuyenMaiService khuyenMaiService;
     private final String UPLOAD_DIR = "src/main/resources/image/";
 
     //hiện sp bên trang quản lý sp
@@ -74,7 +75,19 @@ public class TrangChu {
     @GetMapping("/qlyHoaDon")
     public String hoadon(Model model) {
         model.addAttribute("HoaDon", hoaDonService.getAllHoaDons());
-        return "quanlyhoadon";
+        return "HoaDon";
+    }
+
+    @GetMapping("/qlyHoaDonChiTiet")
+    public String hoadonchitiet(Model model) {
+        model.addAttribute("bronchitics", hoaDonChiTietService.getAllHoaDonChiTiets());
+        return "HoaDonChiTiet";
+    }
+
+    @GetMapping("/qlyKhuyenMai")
+    public String khuyenmai(Model model) {
+        model.addAttribute("KhuyenMai", khuyenMaiService.getAllKhuyenMais());
+        return "KhuyenMai";
     }
 
     //thêm

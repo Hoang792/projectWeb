@@ -37,7 +37,7 @@
         <ul class="nav flex-column">
             <li class="nav-item"><a class="nav-link" href="/trangquanly">Trang chủ</a></li>
             <li class="nav-item"><a class="nav-link" href="/quanlysanpham">Quản lý sản phẩm</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Quản lý khuyến mãi</a></li>
+            <li class="nav-item"><a class="nav-link" href="/qlyKhuyenMai">Quản lý khuyến mãi</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Quản lý người dùng</a></li>
             <li class="nav-item"><a class="nav-link" href="/qlyHoaDon">Quản lý hóa đơn</a></li>
             <li class="nav-item"><a class="nav-link" href="/quanlysize">Quản lý size</a></li>
@@ -55,29 +55,28 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>ID Hóa Đơn</th>
-                    <th>ID Người Dùng</th>
-                    <th>Ngày Lập</th>
-                    <th>Tổng Tiền</th>
+                    <th>ID Khuyến Mãi</th>
+                    <th>Tên Khuyễn Mãi</th>
+                    <th>Giá Trị Khuyễn Mãi</th>
+                    <th>Ngày Bắt Đầu</th>
+                    <th>Ngày Kết Thúc</th>
                     <th>Trạng Thái</th>
-                    <th>Khuyến Mãi</th>
-                    <th>Voucher</th>
                     <th>Chức năng</th>
                 </tr>
                 </thead>
                 <tbody>
 
-                <tr th:each="hoadon : ${HoaDon}">
-                    <td th:text="${hoadon.idhd}"></td>
-                    <td th:text="${hoadon.idnguoidung}"></td>
-                    <td th:text="${hoadon.ngaylap}"></td>
-                    <td th:text="${hoadon.tongtien}"></td>
-                    <td th:text="${hoadon.trangthai}"></td>
-                    <td th:text="${hoadon.khuyenmai}"></td>
-                    <td th:text="${hoadon.voucher}"></td>
+                <tr th:each="khuyenmai : ${KhuyenMai}">
+                    <td th:text="${khuyenmai.idKM}"></td>
+                    <td th:text="${khuyenmai.tenKM}"></td>
+                    <td th:text="${khuyenmai.giaTriKhuyenMai}"></td>
+                    <td th:text="${khuyenmai.ngayBatDau}"></td>
+                    <td th:text="${khuyenmai.ngayKetThuc}"></td>
+                    <td th:text="${khuyenmai.trangThai}"></td>
+
                     <td>
-                        <a th:href="@{/edit(idHD=${hoadon.idhd})}" class="btn btn-primary">Sửa</a>
-                        <a th:href="@{/delete(idHD=${hoadon.idhd})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?');">Xóa</a>
+                        <a th:href="@{/edit(idHD=${khuyenmai.idKM})}" class="btn btn-primary">Sửa</a>
+                        <a th:href="@{/delete(idHD=${khuyenmai.idKM})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?');">Xóa</a>
                     </td>
                 </tr>
 

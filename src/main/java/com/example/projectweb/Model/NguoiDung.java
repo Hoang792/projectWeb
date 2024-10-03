@@ -17,18 +17,18 @@ import java.util.Date;
 public class NguoiDung {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idNguoiDung")
+    @Column(name = "id_nguoi_dung")
     private Integer idNguoiDung;
     @Column(name = "ten")
     private String tenNguoiDung;
-    @Column(name = "diaChi")
+    @Column(name = "dia_chi")
     private String diaChi;
     @Column(name = "sdt")
     private Integer Sdt;
     @Column(name = "email")
     private String email;
-    @Column(name = "ngaySinh")
+    @Column(name = "ngay_sinh")
     private Date ngaySinh;
-    @Column(name = "matKhau")
+    @Column(name = "mat_khau")
     private String matKhau;
 }

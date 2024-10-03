@@ -22,23 +22,23 @@ public class HoaDon {
     private Integer idhd;
 
     @ManyToOne
-    @JoinColumn(name = "idNguoiDung")
+    @JoinColumn(name = "id_nguoi_dung")
     private NguoiDung idnguoidung;
 
     @Column(name = "ngaylap")
     private Date ngaylap;
 
-    @Column (name = "tongTien")
+    @Column (name = "tong_tien")
     private BigDecimal tongtien;
 
     @Column (name = "trangthai")
    private String trangthai;
 
     @ManyToOne
-    @JoinColumn(name = "idKhuyenMai")
+    @JoinColumn(name = "id_khuyen_mai")
     private KhuyenMai khuyenmai;
 
     @ManyToOne
-    @JoinColumn(name = "idVoucher")
+    @JoinColumn(name = "id_voucher")
     private Voucher voucher;
 }
