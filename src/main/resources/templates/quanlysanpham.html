@@ -84,7 +84,7 @@
 
           <td th:text="${sp.mota}"></td>
           <td>
-            <button class="btn btn-warning">Sửa</button>
+            <a th:href="@{/editSanPham(idsanpham=${sp.idSPCT})}" class="btn btn-primary">Sửa</a>
 
             <a th:href="@{/deleteSanPham(idsanpham=${sp.idSPCT})}"
                class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?');">Xóa</a>
@@ -93,7 +93,7 @@
         </tbody>
       </table>
       <div class="text-center">
-        <a href="" class="btn btn-success">Thêm ở đây</a>
+        <a href="/addSanPham" class="btn btn-success">Thêm ở đây</a>
       </div>
     </div>
   </div>

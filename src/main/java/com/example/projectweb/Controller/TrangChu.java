@@ -41,12 +41,12 @@ public class TrangChu {
     private final String UPLOAD_DIR = "src/main/resources/image/";
 
     //hiện sp bên trang quản lý sp
-    @GetMapping("/quanlysanpham")
-    public String sanpham(Model model) {
-        List<sanphamchitiet> sanpham;
-        model.addAttribute("sanpham", sanPhamChitietService.findAll());
-        return "quanlysanpham";
-    }
+//    @GetMapping("/quanlysanpham")
+//    public String sanpham(Model model) {
+//        List<sanphamchitiet> sanpham;
+//        model.addAttribute("sanpham", sanPhamChitietService.findAll());
+//        return "quanlysanpham";
+//    }
     @GetMapping("/trangchu")
     public String home(Model model) {
         //hiện danh sách sản phẩm :
@@ -74,30 +74,30 @@ public class TrangChu {
         return "viewThem";
     }
 
-    // thêm sản phẩm
-    @GetMapping("/addSanPham")
-    public String addSanPham(Model model) {
-        model.addAttribute("sanpham", new sanphamchitiet());
-        // lấy danh sách thương hiệu đổ vào view Thêm sản phẩm :
-        List<thuonghieu> ThuongHieuList = thuonghieuservice.getAllThuongHieus();
-        model.addAttribute("ThuongHieu", ThuongHieuList);
-        // lấy danh sách size
-        List<size>SizeList = sizeService.getAllSizes();
-        model.addAttribute("Size", SizeList);
-        //lấy danh sách màu
-        List<mau>MauList = mauService.getAllMaus();
-        model.addAttribute("Mau", MauList);
+//    // thêm sản phẩm
+//    @GetMapping("/addSanPham")
+//    public String addSanPham(Model model) {
+//        model.addAttribute("sanpham", new sanphamchitiet());
+//        // lấy danh sách thương hiệu đổ vào view Thêm sản phẩm :
+//        List<thuonghieu> ThuongHieuList = thuonghieuservice.getAllThuongHieus();
+//        model.addAttribute("ThuongHieu", ThuongHieuList);
+//        // lấy danh sách size
+//        List<size>SizeList = sizeService.getAllSizes();
+//        model.addAttribute("Size", SizeList);
+//        //lấy danh sách màu
+//        List<mau>MauList = mauService.getAllMaus();
+//        model.addAttribute("Mau", MauList);
+//
+//        return "viewThemSanPham";
+//    }
 
-        return "viewThemSanPham";
-    }
-
-    //lưu sản phẩm
-    @PostMapping("/saveSanPham")
-    public String saveSanPham(@ModelAttribute("sanpham") sanphamchitiet sanpham
-    ) throws IOException {
-        sanPhamChitietService.save(sanpham);
-        return "redirect:/quanlysanpham";
-    }
+//    //lưu sản phẩm
+//    @PostMapping("/saveSanPham")
+//    public String saveSanPham(@ModelAttribute("sanpham") sanphamchitiet sanpham
+//    ) throws IOException {
+//        sanPhamChitietService.save(sanpham);
+//        return "redirect:/quanlysanpham";
+//    }
 
     // lưu màu
     @PostMapping("/save")
@@ -131,12 +131,12 @@ public class TrangChu {
         return "redirect:/qlyMau";
     }
 
-    // xóa sản phẩm
-    @GetMapping("/deleteSanPham")
-    public String deleteSanPham(@RequestParam("idsanpham") Long idsanpham) {
-        sanPhamChitietService.deleteById(idsanpham);
-        return "redirect:/quanlysanpham";
-    }
+//    // xóa sản phẩm
+//    @GetMapping("/deleteSanPham")
+//    public String deleteSanPham(@RequestParam("idsanpham") Long idsanpham) {
+//        sanPhamChitietService.deleteById(idsanpham);
+//        return "redirect:/quanlysanpham";
+//    }
 
     //hình ảnh :
     @GetMapping("/image/{hinhAnh}")

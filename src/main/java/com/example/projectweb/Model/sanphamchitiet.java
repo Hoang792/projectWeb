@@ -50,4 +50,8 @@ public class sanphamchitiet {
 
     @Column(name = "tensp",columnDefinition = "nvarchar(255)")
     private String tensp;
+
+    public void setImage(String fileName) {
+        this.hinhAnh = fileName;
+    }
 }
