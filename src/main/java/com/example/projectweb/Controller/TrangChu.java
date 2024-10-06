@@ -2,9 +2,11 @@ package com.example.projectweb.Controller;
 
 import com.example.projectweb.Model.mau;
 import com.example.projectweb.Model.sanphamchitiet;
+import com.example.projectweb.Model.size;
 import com.example.projectweb.Model.thuonghieu;
 import com.example.projectweb.Service.MauService;
 import com.example.projectweb.Service.SanPhamChitietService;
+import com.example.projectweb.Service.SizeService;
 import com.example.projectweb.Service.thuonghieuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -28,6 +30,10 @@ import java.util.Optional;
 public class TrangChu {
     @Autowired
     private MauService mauService;
+
+    @Autowired
+    private SizeService sizeService;
+
     @Autowired
     private SanPhamChitietService sanPhamChitietService;
 
@@ -40,6 +46,35 @@ public class TrangChu {
         model.addAttribute("sanpham", sanPhamChitietService.findAll());
         return "quanlysanpham";
     }
+
+    @GetMapping("/giohang")
+    public String giohang(Model model) {
+        List<sanphamchitiet> sanpham;
+        model.addAttribute("sanpham", sanPhamChitietService.findAll());
+
+        List<thuonghieu> ThuongHieu;
+        model.addAttribute("ThuongHieu", thuonghieuservice.getAllThuongHieus());
+        return "TrangGioHang";
+    }
+    @GetMapping("/ThongtinSP")
+    public String sanphamchitiet(@RequestParam("idsp") Integer idsp, Model model) {
+        //hiện danh sách sản phẩm :
+        List<sanphamchitiet> sanpham;
+        model.addAttribute("sanpham", sanPhamChitietService.findById(idsp));
+        model.addAttribute("idsp", idsp);
+
+        List<size> Size;
+        model.addAttribute("Size", sizeService.getAllSizes());
+
+        List<mau> Mau;
+        model.addAttribute("Mau", mauService.getAllMaus());
+
+        //hiện danh sách thương hiệu :
+        List<thuonghieu> ThuongHieu;
+        model.addAttribute("ThuongHieu", thuonghieuservice.getAllThuongHieus());
+        return "TrangThongTinSP";
+    }
+
 
     @Autowired
     private thuonghieuService thuonghieuservice;
@@ -76,7 +111,6 @@ public class TrangChu {
     @PostMapping("/save")
     public String saveMau(@ModelAttribute("mau") mau maus
     ) throws IOException {
-
         mauService.saveMau(maus);
         return "redirect:/qlyMau";
     }
