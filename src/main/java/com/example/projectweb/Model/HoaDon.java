@@ -1,5 +1,6 @@
 package com.example.projectweb.Model;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +24,7 @@ public class HoaDon {
 
     @ManyToOne
     @JoinColumn(name = "id_nguoi_dung")
-    private NguoiDung idnguoidung;
+    private NguoiDung nguoidung;
 
     @Column(name = "ngaylap")
     private Date ngaylap;
@@ -35,10 +36,12 @@ public class HoaDon {
    private String trangthai;
 
     @ManyToOne
-    @JoinColumn(name = "id_khuyen_mai")
-    private KhuyenMai khuyenmai;
+    @JoinColumn(name = "idKM")
+    private KhuyenMai khuyenMai;
 
     @ManyToOne
-    @JoinColumn(name = "id_voucher")
+    @JoinColumn(name = "idVoucher")
     private Voucher voucher;
+
+
 }

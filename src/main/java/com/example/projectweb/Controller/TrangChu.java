@@ -1,10 +1,6 @@
 package com.example.projectweb.Controller;
 
-import com.example.projectweb.Model.hoadonchitiet;
-import com.example.projectweb.Model.HoaDon;
-import com.example.projectweb.Model.mau;
-import com.example.projectweb.Model.sanphamchitiet;
-import com.example.projectweb.Model.thuonghieu;
+import com.example.projectweb.Model.*;
 import com.example.projectweb.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -36,6 +32,9 @@ public class TrangChu {
     private HoaDonChiTietService hoaDonChiTietService;
     @Autowired
     private KhuyenMaiService khuyenMaiService;
+    @Autowired
+    private SizeService sizeService;
+
     private final String UPLOAD_DIR = "src/main/resources/image/";
 
     //hiện sp bên trang quản lý sp
@@ -74,8 +73,29 @@ public class TrangChu {
 
     @GetMapping("/qlyHoaDon")
     public String hoadon(Model model) {
+        var hoahon = hoaDonService.getAllHoaDons();
         model.addAttribute("HoaDon", hoaDonService.getAllHoaDons());
         return "HoaDon";
+    }
+
+    @GetMapping("/addHoaDon")
+    public String addHoaDon(Model model) {
+        model.addAttribute("hoadon", new HoaDon());
+        return "ViewThemHoaDon";
+    }
+    @PostMapping("/savehoadon")
+    public String saveHoaDon(@ModelAttribute("HoaDon") HoaDon hoaDon
+    ) throws IOException {
+
+        hoaDonService.save(hoaDon);
+        return "redirect:/qlyHoaDon";
+    }
+
+
+    @GetMapping("/qlySize")
+    public String Size(Model model) {
+        model.addAttribute("size", sizeService.getAllSizes());
+        return "quanlysize";
     }
 
     @GetMapping("/qlyHoaDonChiTiet")
@@ -88,6 +108,19 @@ public class TrangChu {
     public String khuyenmai(Model model) {
         model.addAttribute("KhuyenMai", khuyenMaiService.getAllKhuyenMais());
         return "KhuyenMai";
+    }
+
+    @GetMapping("/addKhuyenMai")
+    public String addKhuyenMai(Model model) {
+        model.addAttribute("khuyenmai", new KhuyenMai());
+        return "ViewThemKhuyenMai";
+    }
+    @PostMapping("/savekhuyenmai")
+    public String saveKhuyenMai(@ModelAttribute("KhuyenMai") KhuyenMai khuyenMai
+    ) throws IOException {
+
+        khuyenMaiService.save(khuyenMai);
+        return "redirect:/qlyKhuyenMai";
     }
 
     //thêm

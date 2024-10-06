@@ -37,10 +37,10 @@
         <ul class="nav flex-column">
             <li class="nav-item"><a class="nav-link" href="/trangqly">Trang chủ</a></li>
             <li class="nav-item"><a class="nav-link" href="/quanlysanpham">Quản lý sản phẩm</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Quản lý khuyến mãi</a></li>
+            <li class="nav-item"><a class="nav-link" href="/qlyKhuyenMai">Quản lý khuyến mãi</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Quản lý người dùng</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Quản lý hóa đơn</a></li>
-            <li class="nav-item"><a class="nav-link" href="/quanlysize">Quản lý size</a></li>
+            <li class="nav-item"><a class="nav-link" href="/qlyHoaDon">Quản lý hóa đơn</a></li>
+            <li class="nav-item"><a class="nav-link" href="/qlySize">Quản lý size</a></li>
             <li class="nav-item"><a class="nav-link" href="/qlyMau">Quản lý màu</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Doanh thu</a></li>
         </ul>
@@ -61,9 +61,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="size : ${size}">
-                    <td th:text="${size.idsize}"></td>
-                    <td th:text="${size.kichthuoc}"></td>
+                <tr th:each="Size : ${size}">
+                    <td th:text="${Size.idsize}"></td>
+                    <td th:text="${Size.kichthuoc}"></td>
                     <td>
                         <button class="btn btn-warning">Sửa</button>
                         <button class="btn btn-danger">Xóa</button>

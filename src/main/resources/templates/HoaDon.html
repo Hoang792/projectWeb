@@ -37,10 +37,10 @@
         <ul class="nav flex-column">
             <li class="nav-item"><a class="nav-link" href="/trangquanly">Trang chủ</a></li>
             <li class="nav-item"><a class="nav-link" href="/quanlysanpham">Quản lý sản phẩm</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Quản lý khuyến mãi</a></li>
+            <li class="nav-item"><a class="nav-link" href="/qlyKhuyenMai">Quản lý khuyến mãi</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Quản lý người dùng</a></li>
             <li class="nav-item"><a class="nav-link" href="/qlyHoaDon">Quản lý hóa đơn</a></li>
-            <li class="nav-item"><a class="nav-link" href="/quanlysize">Quản lý size</a></li>
+            <li class="nav-item"><a class="nav-link" href="/qlySize">Quản lý size</a></li>
             <li class="nav-item"><a class="nav-link" href="/qlyMau">Quản lý màu</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Doanh thu</a></li>
         </ul>
@@ -69,11 +69,11 @@
 
                 <tr th:each="hoadon : ${HoaDon}">
                     <td th:text="${hoadon.idhd}"></td>
-                    <td th:text="${hoadon.idnguoidung}"></td>
+                    <td th:text="${hoadon.nguoidung}"></td>
                     <td th:text="${hoadon.ngaylap}"></td>
                     <td th:text="${hoadon.tongtien}"></td>
                     <td th:text="${hoadon.trangthai}"></td>
-                    <td th:text="${hoadon.khuyenmai}"></td>
+                    <td th:text="${hoadon.khuyenMai}"></td>
                     <td th:text="${hoadon.voucher}"></td>
                     <td>
                         <a th:href="@{/edit(idHD=${hoadon.idhd})}" class="btn btn-primary">Sửa</a>
@@ -84,7 +84,7 @@
                 </tbody>
             </table>
             <div class="text-center">
-                <a href="/add" class="btn btn-success">Thêm hóa đơn mới</a>
+                <a href="/addHoaDon" class="btn btn-success">Thêm hóa đơn mới</a>
             </div>
         </div>
     </div>

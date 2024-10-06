@@ -37,9 +37,9 @@
         <ul class="nav flex-column">
             <li class="nav-item"><a class="nav-link" href="/trangquanly">Trang chủ</a></li>
             <li class="nav-item"><a class="nav-link" href="/quanlysanpham">Quản lý sản phẩm</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Quản lý khuyến mãi</a></li>
+            <li class="nav-item"><a class="nav-link" href="/qlyKhuyenMai">Quản lý khuyến mãi</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Quản lý người dùng</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Quản lý hóa đơn</a></li>
+            <li class="nav-item"><a class="nav-link" href="/qlyHoaDon">Quản lý hóa đơn</a></li>
             <li class="nav-item"><a class="nav-link" href="/quanlysize">Quản lý size</a></li>
             <li class="nav-item"><a class="nav-link" href="/qlyMau">Quản lý màu</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Doanh thu</a></li>
@@ -47,7 +47,7 @@
     </div>
 
     <div class="container">
-        <h1 class="mt-4">QUẢN LÝ HÓA ĐƠN CHI TIẾT</h1>
+        <h1 class="mt-4">QUẢN LÝ KHUYẾN MÃI</h1>
         <div class="mb-3">
             <input type="text" class="form-control" placeholder="Tìm kiếm hóa đơn">
         </div>
@@ -55,11 +55,11 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>ID Hóa Đơn Chi Tiết</th>
+                    <th>ID </th>
                     <th>ID Hóa Đơn</th>
-                    <th>Số Lượng</th>
+                    <th>Số lượng</th>
                     <th>Giá</th>
-                    <th>ID Sản Phẩm Chi Tiết</th>
+                    <th>ID Sản phẩm chi tiết</th>
                     <th>Chức năng</th>
                 </tr>
                 </thead>
@@ -71,6 +71,8 @@
                     <td th:text="${hoadonchitiet.soluong}"></td>
                     <td th:text="${hoadonchitiet.gia}"></td>
                     <td th:text="${hoadonchitiet.idSpct}"></td>
+
+
                     <td>
                         <a th:href="@{/edit(idHD=${hoadonchitiet.id})}" class="btn btn-primary">Sửa</a>
                         <a th:href="@{/delete(idHD=${hoadonchitiet.id})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?');">Xóa</a>
@@ -80,7 +82,7 @@
                 </tbody>
             </table>
             <div class="text-center">
-                <a href="/add" class="btn btn-success">Thêm hóa đơn mới</a>
+                <a href="/add" class="btn btn-success">Thêm khuyến mãi mới</a>
             </div>
         </div>
     </div>
