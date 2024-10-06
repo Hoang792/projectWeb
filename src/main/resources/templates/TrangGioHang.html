@@ -20,7 +20,7 @@
         }
 
         .search-form input {
-            width: 300px;
+            width: 200px;
         }
 
         .navbar-brand img {
@@ -28,18 +28,39 @@
             margin-right: 10px;
         }
 
-        .card-body-sp img{
+        .product-images img {
+            cursor: pointer;
+            border: 1px solid #ddd;
+            transition: transform 0.3s ease;
+        }
+
+        .product-images img:hover {
+            transform: scale(1.1);
+            border-color: #aaa;
+        }
+
+        .display-6 a{
+            text-decoration: none;
+            color: black;
+        }
+
+        .col-md-4 a{
+            text-decoration: none;
 
         }
 
-        .card-body-mota a {
-            text-decoration: none; /* Bỏ gạch chân */
-            color: black; /* Màu chữ mặc định */
-            transition: color 0.3s; /* Hiệu ứng chuyển màu mượt mà */
+        .fixed-buttons button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .card-body-mota a:hover {
-            color: blue; /* Màu chữ khi hover */
+        .sidebar-item i {
+            font-size: 1.2em;
         }
 
         .top-bar {
@@ -59,30 +80,85 @@
             border-radius: 20px;
         }
 
-        .card-body-sp img {
-            width: 100%; /* Chiều rộng 100% của thẻ chứa */
-            height: 250px; /* Chiều cao cố định */
-            object-fit: cover; /* Giữ tỷ lệ hình ảnh và cắt nếu cần */
+        .navigation-header-list {
+            display: flex;
+            list-style: none;
+
+        }
+        .navigation-header-item {
+            padding: 10px 10px 10px ;
+            position: relative;
+
+        }
+        .navigation-header{
+            margin-left: -20px;
+        }
+
+        .navigation-header-item:first-child::after {
+            content: "";
+            display: block;
+            position: absolute;
+            border-right: 1px solid #656565;
+            height: 20px;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+
+        }
+        .navigation-header-link {
+            color: #8a8a8f;
+            text-decoration: none;
+        }
+
+        .navigation-header-link:hover {
+            color: #8686be;
+            text-decoration:underline;
+            cursor: pointer;
+        }
+        .table-responsive{
+            margin-left: 20px;
+        }
+
+        .del-ng {
+
+            display: flex; /* Sử dụng flexbox */
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            align-items: center;
+            background-color: #ffffff;
+            height: 30px;
+            width: 30px;
+            font-size: 20px;
+            transition: color 0.3s, background-color 0.3s; /* Hiệu ứng chuyển tiếp */
+        }
+         .del-ng .del{
+             color: red;
+         }
+        .del-ng:hover {
+            background-color: red; /* Nền khi hover */
+            border-radius:20px ;
+        }
+
+        .del-ng:hover .del {
+            color: white; /* Màu icon khi hover */
         }
 
     </style>
 
     <title>Shop</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
 </head>
 <body>
+<!-- Navbar -->
 
-
-<!--top trang-->
 <div class=" bg-dark">
     <div class="container">
         <div class="top-bar d-flex justify-content-between align-items-center ">
@@ -121,7 +197,7 @@
                     <button class="btn btn-outline-success w-40" type="submit">Tìm kiếm</button>
                 </form>
                 <div class="d-flex">
-                    <a href="/giohang" style="text-decoration: none;color: black;font-size: 12px" class="ms-3"><box-icon type='solid' name='cart-alt'></box-icon>GIỎ HÀNG CỦA BẠN</a>
+                    <a href="" style="text-decoration: none;color: black;font-size: 12px" class="ms-3"><box-icon type='solid' name='cart-alt'></box-icon>GIỎ HÀNG CỦA BẠN</a>
 
                 </div>
             </div>
@@ -181,47 +257,66 @@
     </div>
 </div>
 
-<!-- Nội dung chính -->
-<div class="container mt-4">
-    <h1>Welcome to our shop!</h1>
-    <p>Khám phá hàng ngàn sản phẩm với giá ưu đãi!</p>
-
-
-    <!-- Hiển thị sản phẩm -->
-    <div class="row">
-        <div class="col-md-3 mb-4" th:each="sp : ${sanpham}">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-body-sp">
-
-                        <img th:src="@{'/image/' + ${sp.hinhAnh}}"
-                             class="card-img-top img-thumbnail product"/>
-                    </div>
-                    <div class="card-body-mota">
-                        <a th:href="@{/ThongtinSP(idsp=${sp.idSPCT})}">MUA NGAY</a>
-                        <h5 class="card-title" th:text="${sp.tensp}"></h5>
-                        <p class="card-text">
-                            <span th:text="${sp.gia}"></span>
-                            <span style="color: red;">VNĐ</span>
-                        </p>
-
-
-<!--                        <a th:href="@{/edit?id={id}(id=${maytinh.id})}">-->
-<!--                            <box-icon name='edit'></box-icon>-->
-<!--                        </a>-->
-<!--                        <a th:href="@{/delete?id={id}(id=${maytinh.id})}">-->
-<!--                            <box-icon name='trash'></box-icon>-->
-<!--                        </a>-->
-                    </div>
-
-                </div>
-            </div>
-        </div>
+<!-- Navigation -->
+<div class="container">
+    <div class="navigation-header">
+        <ul class="navigation-header-list">
+            <li class="navigation-header-item"><a class="navigation-header-link" href="/trangchu" title="Trang chủ">Trang chủ</a></li>
+            <li class="navigation-header-item">Giỏ hàng</li>
+        </ul>
     </div>
 </div>
 
+<!-- Nội dung chính -->
+<div class="container">
+
+    <div class="table-responsive">
+        <h1 style="font-size: 25px;color: #073a72">GIỎ HÀNG</h1>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Tạm Tính</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="sanpham : ${sanpham}">
+                <td>
+                    <div class="del-ng text-center">
+                    <a href="#" class="del">
+                        <i class="bi bi-x-circle"></i>
+                    </a>
+                    </div>
+                </td>
+                <td>
+                    <img th:src="@{'/image/'+${sanpham.hinhAnh}}" class="img-thumbnail" width="60" height="60"/>
+                </td>
+                <td>
+                    <span th:text="${sanpham.tensp}"></span> <span>màu</span> <span></span>
+                    <p></p>
+                    <span>Size</span>
+                </td>
+                <td th:text="${sanpham.gia}" ></td>
+                <td></td>
+                <td>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+
 <!-- Footer -->
-<footer class="bg-dark text-white mt-4">
+<footer class="bg-dark text-white mt-5">
     <div class="container">
         <div class="row py-4">
             <!-- Thông tin liên hệ -->
@@ -229,7 +324,7 @@
                 <h5>Thông tin liên hệ</h5>
                 <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận 1, TP. HCM</p>
                 <p><i class="fas fa-phone"></i> 0981.706.588</p>
-                <p><i class="fas fa-envelope"></i>  capvirgo2h@gmail.com</p>
+                <p><i class="fas fa-envelope"></i> capvirgo2h@gmail.com</p>
             </div>
 
             <!-- Liên kết hữu ích -->
@@ -259,6 +354,7 @@
 </footer>
 
 <!-- Bootstrap JS -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
