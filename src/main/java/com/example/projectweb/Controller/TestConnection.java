@@ -10,10 +10,10 @@ public class TestConnection {
     public static void main(String[] args) {
         SQLServerDataSource ds = new SQLServerDataSource();
         ds.setUser("sa");
-        ds.setPassword("12345");
-        ds.setServerName("DESKTOP-3G0AG05\\SQLEXPRESS");
+        ds.setPassword("123456789");
+        ds.setServerName("DESKTOP-5EKOMHK\\SQLEXPRESS01");
         ds.setPortNumber(1433);
-        ds.setDatabaseName("webbangiay");
+        ds.setDatabaseName("Project2");
 
         ds.setTrustServerCertificate(true);
 

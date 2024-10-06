@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Quản lý chức vụ</title>
+    <title>Quản lý hóa đơn</title>
     <style>
         body {
             background-color: #f8f9fa;
@@ -40,61 +40,51 @@
             <li class="nav-item"><a class="nav-link" href="/qlyKhuyenMai">Quản lý khuyến mãi</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Quản lý người dùng</a></li>
             <li class="nav-item"><a class="nav-link" href="/qlyHoaDon">Quản lý hóa đơn</a></li>
-            <li class="nav-item"><a class="nav-link" href="/qlySize">Quản lý size</a></li>
+            <li class="nav-item"><a class="nav-link" href="/quanlysize">Quản lý size</a></li>
             <li class="nav-item"><a class="nav-link" href="/qlyMau">Quản lý màu</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Doanh thu</a></li>
         </ul>
     </div>
 
     <div class="container">
-        <h1 class="mt-4">QUẢN LÝ CHỨC VỤ</h1>
+        <h1 class="mt-4">QUẢN LÝ KHUYẾN MÃI</h1>
         <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Tìm kiếm">
+            <input type="text" class="form-control" placeholder="Tìm kiếm hóa đơn">
         </div>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Tên chức vụ</th>
-                    <th>Mô tả</th>
-                    <th>Quyền truy cập</th>
-                    <th>Thay đổi</th>
+                    <th>ID Khuyến Mãi</th>
+                    <th>Tên Khuyễn Mãi</th>
+                    <th>Giá Trị Khuyễn Mãi</th>
+                    <th>Ngày Bắt Đầu</th>
+                    <th>Ngày Kết Thúc</th>
+                    <th>Trạng Thái</th>
+                    <th>Chức năng</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Quản lý</td>
-                    <td>Quản lý tất cả mọi thứ ở nhà hàng</td>
-                    <td>Món ăn, Bàn, Đặt món, Nguyên liệu, Lịch làm việc, Nhân viên, Doanh thu</td>
+
+                <tr th:each="khuyenmai : ${KhuyenMai}">
+                    <td th:text="${khuyenmai.idKM}"></td>
+                    <td th:text="${khuyenmai.tenKM}"></td>
+                    <td th:text="${khuyenmai.giaTriKhuyenMai}"></td>
+                    <td th:text="${khuyenmai.ngayBatDau}"></td>
+                    <td th:text="${khuyenmai.ngayKetThuc}"></td>
+                    <td th:text="${khuyenmai.trangThai}"></td>
+
                     <td>
-                        <button class="btn btn-warning">Sửa</button>
-                        <button class="btn btn-danger">Xóa</button>
+                        <a th:href="@{/edit(idHD=${khuyenmai.idKM})}" class="btn btn-primary">Sửa</a>
+                        <a th:href="@{/delete(idHD=${khuyenmai.idKM})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?');">Xóa</a>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Phục vụ</td>
-                    <td>Phục vụ khách hàng, chạy bàn</td>
-                    <td>Món ăn, Lịch làm việc</td>
-                    <td>
-                        <button class="btn btn-warning">Sửa</button>
-                        <button class="btn btn-danger">Xóa</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Đầu bếp</td>
-                    <td>Nấu nướng, quản lý thức ăn</td>
-                    <td>Món ăn, Nguyên liệu, Lịch làm việc</td>
-                    <td>
-                        <button class="btn btn-warning">Sửa</button>
-                        <button class="btn btn-danger">Xóa</button>
-                    </td>
-                </tr>
+
                 </tbody>
             </table>
+            <div class="text-center">
+                <a href="/addKhuyenMai" class="btn btn-success">Thêm khuyến mãi mới</a>
+            </div>
         </div>
     </div>
 </div>

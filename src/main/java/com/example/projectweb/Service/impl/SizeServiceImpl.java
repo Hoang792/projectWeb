@@ -1,4 +1,4 @@
-package com.example.projectweb.Service.IMPL;
+package com.example.projectweb.Service.impl;
 
 import com.example.projectweb.Model.size;
 import com.example.projectweb.Repository.SizeRepository;

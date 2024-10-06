@@ -1,4 +1,4 @@
-package com.example.projectweb.Service.IMPL;
+package com.example.projectweb.Service.impl;
 
 import com.example.projectweb.Model.Voucher;
 import com.example.projectweb.Repository.VoucherRepository;

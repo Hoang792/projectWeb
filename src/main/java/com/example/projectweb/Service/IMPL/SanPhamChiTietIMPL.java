@@ -1,4 +1,4 @@
-package com.example.projectweb.Service.IMPL;
+package com.example.projectweb.Service.impl;
 
 import com.example.projectweb.Model.sanphamchitiet;
 import com.example.projectweb.Repository.SanPhamChiTietRepository;
@@ -13,6 +13,11 @@ public class SanPhamChiTietIMPL implements SanPhamChitietService {
 
     @Autowired
     private SanPhamChiTietRepository sanPhamChiTietRepository;
+
+    @Override
+    public List<sanphamchitiet> getAllSanPhamChiTiets() {
+        return (List<sanphamchitiet>) sanPhamChiTietRepository.findAll();
+    }
 
     @Override
     public List<sanphamchitiet> findAll() {
