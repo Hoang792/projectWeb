@@ -19,7 +19,6 @@ public class MauServiceImpl implements MauService {
     public List<mau> getAllMaus() {
         return (List<mau>) mauRepository.findAll();
     }
-
     @Override
     public void saveMau(mau maus){mauRepository.save(maus);
     }
