@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface thuonghieuRepository extends JpaRepository<thuonghieu, Integer> {
-    List<thuonghieu> findByTenthuonghieuContainingIgnoreCase(String query);
+public interface thuonghieuRepository extends JpaRepository<thuonghieu, Long> {
+    List<thuonghieu> findByTenthuonghieuContainingIgnoreCase(String tenthuonghieu);
 }

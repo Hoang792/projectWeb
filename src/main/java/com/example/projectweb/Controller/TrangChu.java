@@ -40,13 +40,6 @@ public class TrangChu {
 
     private final String UPLOAD_DIR = "src/main/resources/image/";
 
-    //hiện sp bên trang quản lý sp
-//    @GetMapping("/quanlysanpham")
-//    public String sanpham(Model model) {
-//        List<sanphamchitiet> sanpham;
-//        model.addAttribute("sanpham", sanPhamChitietService.findAll());
-//        return "quanlysanpham";
-//    }
     @GetMapping("/trangchu")
     public String home(Model model) {
         //hiện danh sách sản phẩm :
@@ -62,42 +55,30 @@ public class TrangChu {
     public String qly(Model model) {
         return "trangquanly";
     }
+
     @GetMapping("/qlyMau")
     public String mau(Model model) {
         model.addAttribute("mau", mauService.getAllMaus());
         return "quanlymau";
     }
+    //trang quản lý thương hiệu
+    @GetMapping("/quanlythuonghieu")
+    public String thuonghieu(Model model) {
+        model.addAttribute("thuonghieu", thuonghieuservice.getAllThuongHieus());
+        return "quanlythuonghieu";
+    }
+
     //thêm màu
     @GetMapping("/add")
     public String addPhoneForm(Model model) {
         model.addAttribute("maus", new mau());
         return "viewThem";
     }
-
-//    // thêm sản phẩm
-//    @GetMapping("/addSanPham")
-//    public String addSanPham(Model model) {
-//        model.addAttribute("sanpham", new sanphamchitiet());
-//        // lấy danh sách thương hiệu đổ vào view Thêm sản phẩm :
-//        List<thuonghieu> ThuongHieuList = thuonghieuservice.getAllThuongHieus();
-//        model.addAttribute("ThuongHieu", ThuongHieuList);
-//        // lấy danh sách size
-//        List<size>SizeList = sizeService.getAllSizes();
-//        model.addAttribute("Size", SizeList);
-//        //lấy danh sách màu
-//        List<mau>MauList = mauService.getAllMaus();
-//        model.addAttribute("Mau", MauList);
-//
-//        return "viewThemSanPham";
-//    }
-
-//    //lưu sản phẩm
-//    @PostMapping("/saveSanPham")
-//    public String saveSanPham(@ModelAttribute("sanpham") sanphamchitiet sanpham
-//    ) throws IOException {
-//        sanPhamChitietService.save(sanpham);
-//        return "redirect:/quanlysanpham";
-//    }
+    @GetMapping("/addthuonghieu")
+    public String addthuonghieu(Model model) {
+        model.addAttribute("thuonghieus", new thuonghieu());
+        return "viewthemthuonghieu";
+    }
 
     // lưu màu
     @PostMapping("/save")
@@ -106,6 +87,13 @@ public class TrangChu {
         mauService.saveMau(maus);
         return "redirect:/qlyMau";
     }
+    // lưu thương hiệu
+    @PostMapping("/savethuonghieu")
+    public String savethuonghieu(@ModelAttribute("thuonghieu") thuonghieu thuonghieus) throws IOException{
+        thuonghieuservice.savethuonghieu(thuonghieus);
+        return "redirect:/quanlythuonghieu";
+    }
+
 
     //sửa màu
     @GetMapping("/edit")
@@ -113,6 +101,13 @@ public class TrangChu {
         Optional<mau> mau = mauService.findMauByIdmau(idmau);
         mau.ifPresent(p -> model.addAttribute("maus", p));
         return "viewSua";
+    }
+    // sửa thương hiệu
+    @GetMapping("/editthuonghieu")
+    public String editthuonghieu(@RequestParam("idthuonghieu") Long idthuonghieu, Model model) {
+        Optional<thuonghieu> thuonghieu = thuonghieuservice.findThuongHieuById(idthuonghieu);
+        thuonghieu.ifPresent(p -> model.addAttribute("thuonghieus", p));
+        return "viewsuathuonghieu";
     }
 
     // update màu
@@ -123,6 +118,12 @@ public class TrangChu {
         mauService.saveMau(maus);
         return "redirect:/qlyMau";
     }
+    // updatethuonghieu
+    @PostMapping("/updatethuonghieu")
+    public String updatethuonghieu(@ModelAttribute("thuonghieu") thuonghieu thuonghieus) throws IOException{
+        thuonghieuservice.savethuonghieu(thuonghieus);
+        return "redirect:/quanlythuonghieu";
+    }
 
     //xóa màu
     @GetMapping("/delete")
@@ -130,13 +131,12 @@ public class TrangChu {
         mauService.deleteMau(idmau);
         return "redirect:/qlyMau";
     }
-
-//    // xóa sản phẩm
-//    @GetMapping("/deleteSanPham")
-//    public String deleteSanPham(@RequestParam("idsanpham") Long idsanpham) {
-//        sanPhamChitietService.deleteById(idsanpham);
-//        return "redirect:/quanlysanpham";
-//    }
+    //xóa thương hiệu
+    @GetMapping("/deletethuonghieu")
+    public String deletethuonghieu(@RequestParam("idthuonghieu") Long idthuonghieu) {
+        thuonghieuservice.deletethuonghieu(idthuonghieu);
+        return "redirect:/quanlythuonghieu";
+    }
 
     //hình ảnh :
     @GetMapping("/image/{hinhAnh}")
