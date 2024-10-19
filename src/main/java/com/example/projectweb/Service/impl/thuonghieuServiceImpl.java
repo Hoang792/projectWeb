@@ -17,16 +17,19 @@ public class thuonghieuServiceImpl implements thuonghieuService {
 
     @Override
     public List<thuonghieu> getAllThuongHieus() {
-        return thuongHieuRepository.findAll();
+        return (List<thuonghieu>)thuongHieuRepository.findAll();
+    }
+    @Override
+    public void save(thuonghieu thuonghieu) {
+    }
+    @Override
+    public void delete(Long id) {
+        thuongHieuRepository.deleteById(id);
     }
 
     @Override
-    public Optional<thuonghieu> findThuongHieuById(Integer idthuonghieu) {
-        return thuongHieuRepository.findById(idthuonghieu);
+    public thuonghieu findByid(Long id) {
+        return null;
     }
 
-    @Override
-    public List<thuonghieu> searchThuongHieus(String query) {
-        return thuongHieuRepository.findByTenthuonghieuContainingIgnoreCase(query);
-    }
 }

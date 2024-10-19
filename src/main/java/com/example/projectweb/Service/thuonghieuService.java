@@ -7,8 +7,10 @@ import java.util.Optional;
 
 public interface thuonghieuService {
     List<thuonghieu> getAllThuongHieus();
+    void save (thuonghieu thuonghieu);
+    void delete (Long id);
+    thuonghieu findByid(Long id);
 
-    Optional<thuonghieu> findThuongHieuById(Integer idthuonghieu);
 
-    List<thuonghieu> searchThuongHieus(String query);
+
 }
