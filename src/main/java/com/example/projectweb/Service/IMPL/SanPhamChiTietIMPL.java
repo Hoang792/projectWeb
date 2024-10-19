@@ -39,4 +39,9 @@ public class SanPhamChiTietIMPL implements SanPhamChitietService {
         return sanPhamChiTietRepository.findAllByTenspContaining(tensp);
     }
 
+    @Override
+    public List<sanphamchitiet> search(String timkiem) {
+        return sanPhamChiTietRepository.search(timkiem);
+    }
+
 }

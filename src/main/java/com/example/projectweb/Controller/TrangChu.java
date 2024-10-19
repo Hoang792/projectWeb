@@ -48,9 +48,20 @@ public class TrangChu {
 //        return "quanlysanpham";
 //    }
     @GetMapping("/trangchu")
-    public String home(Model model) {
+    public String home(Model model, @RequestParam (name="timkiem",required=false)String timkiem) {
         //hiện danh sách sản phẩm :
         List<sanphamchitiet> sanpham;
+        if(timkiem ==null){
+            sanpham = sanPhamChitietService.findAll();
+        }else{
+            sanpham= sanPhamChitietService.search("%"+timkiem+"%");
+            if(sanpham.isEmpty()){
+                model.addAttribute("thongbaokhongtimthaysp", "Không tìm thấy sản phẩm nào với tên tìm kiếm!");
+                return "index";
+            }
+            model.addAttribute("sanpham", sanpham);
+            return "index";
+        }
         model.addAttribute("sanpham", sanPhamChitietService.findAll());
 
         //hiện danh sách thương hiệu :

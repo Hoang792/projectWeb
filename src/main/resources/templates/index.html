@@ -28,9 +28,9 @@
         <a class="navbar-brand" href="#">
             <img src="https://capvirgo.com/wp-content/uploads/2017/11/logo-3.png" alt="Logo">
         </a>
-        <form class="d-flex search-form ml-auto">
-            <input class="form-control me-2 w-450" type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
-            <button class="btn btn-outline-success w-40" type="submit">Tìm kiếm</button>
+        <form class="d-flex ml-auto khungtimkiem" th:action="@{/trangchu}" th:method="get">
+            <input name="timkiem" class="form-control nhaptim me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-primary btntimkiem" type="submit">Search</button>
         </form>
         <div class="d-flex">
             <a href="/cart" class="ms-3">
@@ -93,6 +93,10 @@
     </div>
 </nav>
 
+<!-- Thông báo khi tìm kiếm không tìm thấy sản phẩm -->
+<div th:if="${thongbaokhongtimthaysp}" class="alert alert-danger" role="alert" id="danger-message-timkiem">
+    <span th:text="${thongbaokhongtimthaysp}"></span>
+</div>
 <!-- Nội dung chính -->
 <div class="container mt-4">
     <!--    <h1>Welcome to our shop!</h1>-->
@@ -102,12 +106,12 @@
     <!-- Hiển thị sản phẩm -->
     <div class="row">
         <div class="col-md-3 mb-4" th:each="sp : ${sanpham}">
-            <div class="card"style="width: 250px; height: 350px;">
+            <div class="card"style=";">
                 <div class="card-body">
                     <div class="card-body-sp">
 
-                        <img th:src="@{'/image/' + ${sp.hinhAnh}}"
-                             class="card-img-top img-thumbnail product" style ="object-fit: cover"/>
+                        <img  th:src="@{'/image/' + ${sp.hinhAnh}} "
+                             class="card-img-top img-thumbnail product" style ="width: 250px; height: 150px;object-fit: cover"/>
                     </div>
                     <div class="card-body-mota">
                         <h5 class="card-title" th:text="${sp.tensp}"></h5>

@@ -12,5 +12,5 @@ public interface SanPhamChitietService {
     void deleteById(Long id);
     sanphamchitiet findById(Long idsp);
     List<sanphamchitiet> findAllByTenspContaining(String tensp);
-
+    List <sanphamchitiet>search(String timkiem);
 }

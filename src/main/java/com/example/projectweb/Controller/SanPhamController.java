@@ -38,9 +38,18 @@ public class SanPhamController {
     private MauService mauService;
 
     @GetMapping("/quanlysanpham")
-    public String sanpham(Model model) {
+    public String sanpham(Model model , @RequestParam(name = "timkiem", required = false) String timkiem) {
         List<sanphamchitiet> sanpham;
-        model.addAttribute("sanpham", sanPhamChitietService.findAll());
+        if(timkiem==null){
+            sanpham = sanPhamChitietService.findAll();
+        }else {
+            sanpham = sanPhamChitietService.search("%"+timkiem+"%");
+            if(sanpham.isEmpty()){
+                model.addAttribute("thongbaokhongtimthaysp", "Không tìm thấy sản phẩm nào với tên tìm kiếm!");
+                return "quanlysanpham";
+            }
+        }
+        model.addAttribute("sanpham", sanpham);
         return "quanlysanpham";
     }
 

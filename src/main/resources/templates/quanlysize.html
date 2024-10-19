@@ -49,9 +49,10 @@
 
     <div class="container">
         <h1 class="mt-4">QUẢN LÝ SIZE</h1>
-        <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Tìm kiếm">
-        </div>
+        <form class="d-flex ml-auto khungtimkiem" th:action="@{/quanlysize}" th:method="get">
+            <input name="timkiem" class="form-control nhaptim me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-primary btntimkiem" type="submit">Search</button>
+        </form>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
