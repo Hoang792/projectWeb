@@ -1,14 +1,16 @@
 package com.example.projectweb.Service;
 
-import com.example.projectweb.Model.KhuyenMai;
+import com.example.projectweb.Model.khuyenMai;
+import com.example.projectweb.Model.size;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface KhuyenMaiService {
-    List<KhuyenMai> getAllKhuyenMais();
-    List<KhuyenMai> findAll();
-    void save(KhuyenMai khuyenMai);
-    void deleteById(Integer id);
-    KhuyenMai findById(Integer id);
-    List<KhuyenMai> findAllByTenKMContaining(String tenKM);
+    List<khuyenMai> getAllKhuyenMais();
+    List<khuyenMai> findAll();
+    void save(khuyenMai khuyenMai);
+    void deletekhuyenmai(Integer idKM);
+    Optional<khuyenMai> findByIdKM(Integer idKM);
+    List<khuyenMai> findAllByTenKMContaining(String tenKM);
 }

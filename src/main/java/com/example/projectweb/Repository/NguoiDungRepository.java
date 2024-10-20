@@ -1,11 +1,11 @@
 package com.example.projectweb.Repository;
 
-import com.example.projectweb.Model.NguoiDung;
+import com.example.projectweb.Model.nguoidung;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface NguoiDungRepository extends JpaRepository<NguoiDung, Integer> {
-    NguoiDung findByEmail(String email);
-    List<NguoiDung> findAllBytenNguoiDungContaining(String tenNguoiDung);
+public interface NguoiDungRepository extends JpaRepository<nguoidung, Integer> {
+    nguoidung findByEmail(String email);
+    List<nguoidung> findAllBytenNguoiDungContaining(String tenNguoiDung);
 }

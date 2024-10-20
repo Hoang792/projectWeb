@@ -24,7 +24,7 @@ public class HoaDon {
 
     @ManyToOne
     @JoinColumn(name = "id_nguoi_dung")
-    private NguoiDung nguoidung;
+    private nguoidung NguoiDung;
 
     @Column(name = "ngaylap")
     private Date ngaylap;
@@ -37,11 +37,11 @@ public class HoaDon {
 
     @ManyToOne
     @JoinColumn(name = "idKM")
-    private KhuyenMai khuyenMai;
+    private khuyenMai KhuyenMai;
 
     @ManyToOne
     @JoinColumn(name = "idVoucher")
-    private Voucher voucher;
+    private voucher Voucher;
 
 
 }

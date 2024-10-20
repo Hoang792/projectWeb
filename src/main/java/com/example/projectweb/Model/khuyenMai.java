@@ -14,7 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
-public class KhuyenMai {
+public class khuyenMai {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idKM")

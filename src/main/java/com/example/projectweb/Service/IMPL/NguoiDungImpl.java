@@ -1,6 +1,6 @@
 package com.example.projectweb.Service.impl;
 
-import com.example.projectweb.Model.NguoiDung;
+import com.example.projectweb.Model.nguoidung;
 import com.example.projectweb.Repository.NguoiDungRepository;
 import com.example.projectweb.Service.NguoiDungService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +15,17 @@ public class NguoiDungImpl implements NguoiDungService {
     private NguoiDungRepository nguoiDungRepository;
 
     @Override
-    public List<NguoiDung> findAll() {
+    public List<nguoidung> findAll() {
         return nguoiDungRepository.findAll();
     }
 
     @Override
-    public List<NguoiDung> getAllNguoiDungs() {
-        return (List<NguoiDung>) nguoiDungRepository.findAll();
+    public List<nguoidung> getAllNguoiDungs() {
+        return (List<nguoidung>) nguoiDungRepository.findAll();
     }
 
     @Override
-    public void save(NguoiDung nguoiDung) {
+    public void save(nguoidung nguoiDung) {
         nguoiDungRepository.save(nguoiDung);
     }
 
@@ -35,17 +35,17 @@ public class NguoiDungImpl implements NguoiDungService {
     }
 
     @Override
-    public NguoiDung findById(Integer id) {
+    public nguoidung findById(Integer id) {
         return nguoiDungRepository.findById(id).orElse(null);
     }
 
     @Override
-    public NguoiDung findByEmail(String email) {
+    public nguoidung findByEmail(String email) {
         return nguoiDungRepository.findByEmail(email);
     }
 
     @Override
-    public List<NguoiDung> findAllBytenNguoiDungContaining(String tenNguoiDung) {
+    public List<nguoidung> findAllBytenNguoiDungContaining(String tenNguoiDung) {
         return nguoiDungRepository.findAllBytenNguoiDungContaining(tenNguoiDung);
     }
 }

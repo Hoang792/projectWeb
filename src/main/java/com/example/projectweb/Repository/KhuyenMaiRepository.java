@@ -1,10 +1,10 @@
 package com.example.projectweb.Repository;
 
-import com.example.projectweb.Model.KhuyenMai;
+import com.example.projectweb.Model.khuyenMai;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface KhuyenMaiRepository extends JpaRepository<KhuyenMai, Integer> {
-    List<KhuyenMai> findAllByTenKMContaining(String tenKM);
+public interface KhuyenMaiRepository extends JpaRepository<khuyenMai, Integer> {
+    List<khuyenMai> findAllByTenKMContaining(String tenKM);
 }

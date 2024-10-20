@@ -48,44 +48,40 @@
     </div>
 
     <div class="container">
-        <h1 class="mt-4">QUẢN LÝ HÓA ĐƠN</h1>
+        <h1 class="mt-4">QUẢN LÝ Voucher</h1>
         <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Tìm kiếm hóa đơn">
+            <input type="text" class="form-control" placeholder="Tìm kiếm">
         </div>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>ID Hóa Đơn</th>
-                    <th>ID Người Dùng</th>
-                    <th>Ngày Lập</th>
-                    <th>Tổng Tiền</th>
+                    <th>ID Voucher</th>
+                    <th>Tên Voucher</th>
+                    <th>Ngày Bắt Đầu</th>
+                    <th>Ngày Kết Thúc</th>
                     <th>Trạng Thái</th>
-                    <th>Khuyến Mãi</th>
-                    <th>Voucher</th>
                     <th>Chức năng</th>
                 </tr>
                 </thead>
                 <tbody>
 
-                <tr th:each="hoadon : ${HoaDon}">
-                    <td th:text="${hoadon.idhd}"></td>
-                    <td th:text="${hoadon.nguoiDung}"></td>
-                    <td th:text="${hoadon.ngaylap}"></td>
-                    <td th:text="${hoadon.tongtien}"></td>
-                    <td th:text="${hoadon.trangthai}"></td>
-                    <td th:text="${hoadon.khuyenMai}"></td>
-                    <td th:text="${hoadon.voucher}"></td>
+                <tr th:each="voucher : ${Voucher}">
+                    <td th:text="${voucher.idVoucher}"></td>
+                    <td th:text="${voucher.tenvoucher}"></td>
+                    <td th:text="${voucher.ngayBatDau}"></td>
+                    <td th:text="${voucher.ngayKetThuc}"></td>
+                    <td th:text="${voucher.trangThai}"></td>
                     <td>
-                        <a th:href="@{/edit(idHD=${hoadon.idhd})}" class="btn btn-primary">Sửa</a>
-                        <a th:href="@{/delete(idHD=${hoadon.idhd})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?');">Xóa</a>
+                        <a th:href="@{/editvoucher(idVoucher=${voucher.idVoucher})}" class="btn btn-primary">Sửa</a>
+                        <a th:href="@{/deletevoucher(idVoucher=${voucher.idVoucher})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?');">Xóa</a>
                     </td>
                 </tr>
 
                 </tbody>
             </table>
             <div class="text-center">
-                <a href="/addHoaDon" class="btn btn-success">Thêm hóa đơn mới</a>
+                <a href="/addVoucher" class="btn btn-success">Thêm mới</a>
             </div>
         </div>
     </div>

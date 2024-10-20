@@ -1,5 +1,6 @@
 package com.example.projectweb.Service.impl;
 
+import com.example.projectweb.Model.mau;
 import com.example.projectweb.Model.size;
 import com.example.projectweb.Repository.SizeRepository;
 import com.example.projectweb.Service.SizeService;
@@ -14,6 +15,10 @@ public class SizeServiceImpl implements SizeService {
 
     @Autowired
     private SizeRepository sizeRepository;
+
+    @Override
+    public void saveSize(size Size){sizeRepository.save(Size);
+    }
 
     @Override
     public List<size> getAllSizes() {

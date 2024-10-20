@@ -1,14 +1,19 @@
 package com.example.projectweb.Service;
 
-import com.example.projectweb.Model.Voucher;
+import com.example.projectweb.Model.size;
+import com.example.projectweb.Model.voucher;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface VoucherService {
-    List<Voucher> getAllVouchers();
+    List<voucher> getAllVouchers();
 
-    Optional<Voucher> findVoucherById(Integer idVoucher);
+    void deleteVoucher(Integer idVoucher);
 
-    List<Voucher> searchVouchers(String query);
+    void saveVoucher(voucher Voucher);
+
+    Optional<voucher> findVoucherById(Integer idVoucher);
+
+    List<voucher> searchVouchers(String query);
 }

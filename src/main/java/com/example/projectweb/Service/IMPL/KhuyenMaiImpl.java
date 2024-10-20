@@ -1,46 +1,49 @@
 package com.example.projectweb.Service.impl;
 
-import com.example.projectweb.Model.KhuyenMai;
+import com.example.projectweb.Model.khuyenMai;
+import com.example.projectweb.Model.size;
 import com.example.projectweb.Repository.KhuyenMaiRepository;
 import com.example.projectweb.Service.KhuyenMaiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class KhuyenMaiImpl implements KhuyenMaiService {
+public  class KhuyenMaiImpl implements KhuyenMaiService {
 
     @Autowired
     private KhuyenMaiRepository khuyenMaiRepository;
 
     @Override
-    public List<KhuyenMai> getAllKhuyenMais() {
-        return (List<KhuyenMai>) khuyenMaiRepository.findAll();
+    public List<khuyenMai> getAllKhuyenMais() {
+        return (List<khuyenMai>) khuyenMaiRepository.findAll();
     }
 
     @Override
-    public List<KhuyenMai> findAll() {
+    public List<khuyenMai> findAll() {
         return khuyenMaiRepository.findAll();
     }
 
     @Override
-    public void save(KhuyenMai khuyenMai) {
+    public void save(khuyenMai khuyenMai) {
         khuyenMaiRepository.save(khuyenMai);
     }
 
     @Override
-    public void deleteById(Integer id) {
-        khuyenMaiRepository.deleteById(id);
+    public void deletekhuyenmai(Integer idKM) {
+        khuyenMaiRepository.deleteById(idKM);
     }
 
     @Override
-    public KhuyenMai findById(Integer id) {
-        return khuyenMaiRepository.findById(id).orElse(null);
+    public Optional<khuyenMai> findByIdKM(Integer idKM) {
+        return khuyenMaiRepository.findById(idKM);
     }
 
+
     @Override
-    public List<KhuyenMai> findAllByTenKMContaining(String tenKM) {
+    public List<khuyenMai> findAllByTenKMContaining(String tenKM) {
         return khuyenMaiRepository.findAllByTenKMContaining(tenKM);
     }
 }

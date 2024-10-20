@@ -1,15 +1,15 @@
 package com.example.projectweb.Service;
 
-import com.example.projectweb.Model.NguoiDung;
+import com.example.projectweb.Model.nguoidung;
 
 import java.util.List;
 
 public interface NguoiDungService {
-    List<NguoiDung> getAllNguoiDungs();
-    List<NguoiDung> findAll();
-    void save(NguoiDung nguoiDung);
+    List<nguoidung> getAllNguoiDungs();
+    List<nguoidung> findAll();
+    void save(nguoidung nguoiDung);
     void deleteById(Integer id);
-    NguoiDung findById(Integer id);
-    NguoiDung findByEmail(String email);
-    List<NguoiDung> findAllBytenNguoiDungContaining(String tenNguoiDung);
+    nguoidung findById(Integer id);
+    nguoidung findByEmail(String email);
+    List<nguoidung> findAllBytenNguoiDungContaining(String tenNguoiDung);
 }

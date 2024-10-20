@@ -10,13 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +31,8 @@ public class TrangChu {
     private KhuyenMaiService khuyenMaiService;
     @Autowired
     private SizeService sizeService;
+    @Autowired
+    private VoucherService voucherService;
 
     private final String UPLOAD_DIR = "src/main/resources/image/";
 
@@ -90,12 +89,84 @@ public class TrangChu {
         hoaDonService.save(hoaDon);
         return "redirect:/qlyHoaDon";
     }
+// voucher
+    @GetMapping("/qlyVoucher")
+    public String voucher(Model model) {
+        model.addAttribute("Voucher", voucherService.getAllVouchers());
+        return "Voucher";
+    }
+
+    // thêm Voucher
+    @GetMapping("/addVoucher")
+    public String addvoucher(Model model) {
+        model.addAttribute("voucher", new voucher());
+        return "ViewThemVoucher";
+    }
+    @PostMapping("/saveVoucher")
+    public String savevoucher(@ModelAttribute("voucher") voucher Voucher
+    ) throws IOException {
+
+        voucherService.saveVoucher(Voucher);
+        return "redirect:/qlyVoucher";
+    }
+// sửa Voucher
+    @GetMapping("/editvoucher")
+    public String editVoucher(@RequestParam("idVoucher") Integer idVoucher, Model model) {
+        Optional<voucher> Voucher = voucherService.findVoucherById(idVoucher);
+        Voucher.ifPresent(p -> model.addAttribute("voucher", p));
+        return "ViewSuaVoucher";
+    }
+
+    @PostMapping("/updatevoucher")
+    public String updateVoucher(@ModelAttribute("phone") voucher Voucher
+    ) throws IOException {
+
+        voucherService.saveVoucher(Voucher);
+        return "redirect:/qlyVoucher";
+    }
+
+    //xóa Voucher
+    @GetMapping("/deletevoucher")
+    public String deleteVoucher(@RequestParam("idVoucher") Integer idVoucher) {
+        voucherService.deleteVoucher(idVoucher);
+        return "redirect:/qlyVoucher";
+    }
+
 
 
     @GetMapping("/qlySize")
     public String Size(Model model) {
         model.addAttribute("size", sizeService.getAllSizes());
         return "quanlysize";
+    }
+
+    // thêm Size
+    @GetMapping("/addSize")
+    public String addsize(Model model) {
+        model.addAttribute("size", new size());
+        return "ViewThemSize";
+    }
+    @PostMapping("/saveSize")
+    public String savesize(@ModelAttribute("Size") size Size
+    ) throws IOException {
+
+        sizeService.saveSize(Size);
+        return "redirect:/qlySize";
+    }
+// Sửa Size
+    @GetMapping("/editsize")
+    public String editSize(@RequestParam("idsize") Integer idsize, Model model) {
+        Optional<size> sizes = sizeService.findSizeByIdsize(idsize);
+        sizes.ifPresent(p -> model.addAttribute("size", p));
+        return "ViewSuaSize";
+    }
+
+    @PostMapping("/updatesize")
+    public String updateSize(@ModelAttribute("phone") size Size
+    ) throws IOException {
+
+        sizeService.saveSize(Size);
+        return "redirect:/qlySize";
     }
 
     @GetMapping("/qlyHoaDonChiTiet")
@@ -109,17 +180,39 @@ public class TrangChu {
         model.addAttribute("KhuyenMai", khuyenMaiService.getAllKhuyenMais());
         return "KhuyenMai";
     }
+    //Thêm
 
     @GetMapping("/addKhuyenMai")
     public String addKhuyenMai(Model model) {
-        model.addAttribute("khuyenmai", new KhuyenMai());
+        model.addAttribute("khuyenmai", new khuyenMai());
         return "ViewThemKhuyenMai";
     }
     @PostMapping("/savekhuyenmai")
-    public String saveKhuyenMai(@ModelAttribute("KhuyenMai") KhuyenMai khuyenMai
+    public String saveKhuyenMai(@ModelAttribute("KhuyenMai") khuyenMai khuyenMai
     ) throws IOException {
 
         khuyenMaiService.save(khuyenMai);
+        return "redirect:/qlyKhuyenMai";
+    }
+
+//Sửa
+@GetMapping("/editkhuyenmai")
+public String editKhuyenMai(@RequestParam("idKM") Integer idKM, Model model) {
+    Optional<khuyenMai> KhuyenMai = khuyenMaiService.findByIdKM(idKM);
+    KhuyenMai.ifPresent(p -> model.addAttribute("khuyenMai", p));
+    return "ViewSuaKhuyenMai";
+}
+@PostMapping("/updatekhuyenmai")
+    public String updateKhuyenMai(@ModelAttribute("phone") khuyenMai KhuyenMai
+    ) throws IOException {
+        khuyenMaiService.save(KhuyenMai);
+        return "redirect:/qlyKhuyenMai";
+    }
+
+    //xóa Khuyến Mãi
+    @GetMapping("/deletekhuyenmai")
+    public String deleteKhuyenMai(@RequestParam("idKM") Integer idKM) {
+        khuyenMaiService.deletekhuyenmai(idKM);
         return "redirect:/qlyKhuyenMai";
     }
 
