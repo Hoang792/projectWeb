@@ -15,6 +15,11 @@ public class SanPhamChiTietIMPL implements SanPhamChitietService {
     private SanPhamChiTietRepository sanPhamChiTietRepository;
 
     @Override
+    public List<sanphamchitiet> getAllSanPhamChiTiets() {
+        return (List<sanphamchitiet>) sanPhamChiTietRepository.findAll();
+    }
+
+    @Override
     public List<sanphamchitiet> findAll() {
         return sanPhamChiTietRepository.findAll();
     }

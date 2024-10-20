@@ -28,8 +28,8 @@ public class MauServiceImpl implements MauService {
         mauRepository.deleteById(id);
     }
     @Override
-    public Optional<mau> findMauByIdmau(Long idmau) {
-        return mauRepository.findById(idmau);
+    public Optional<mau> findMauByIdmau(Integer idmau) {
+        return mauRepository.findById(Long.valueOf(idmau));
     }
 
     @Override

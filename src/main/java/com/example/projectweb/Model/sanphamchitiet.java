@@ -18,8 +18,8 @@ import java.util.Date;
 public class sanphamchitiet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idSPCT")
-    private Integer idSPCT;
+    @Column(name = "idspct")
+    public Integer idSPCT;
 
     @ManyToOne
     @JoinColumn(name = "idThuongHieu")
@@ -37,7 +37,7 @@ public class sanphamchitiet {
     private String soLuong;
 
     @Column(name = "gia")
-    private BigDecimal gia;
+    private int gia;
 
     @Column(name = "mota",columnDefinition = "nvarchar(255)")
     private String mota;

@@ -1,13 +1,7 @@
 package com.example.projectweb.Controller;
 
-import com.example.projectweb.Model.mau;
-import com.example.projectweb.Model.sanphamchitiet;
-import com.example.projectweb.Model.size;
-import com.example.projectweb.Model.thuonghieu;
-import com.example.projectweb.Service.MauService;
-import com.example.projectweb.Service.SanPhamChitietService;
-import com.example.projectweb.Service.SizeService;
-import com.example.projectweb.Service.thuonghieuService;
+import com.example.projectweb.Model.*;
+import com.example.projectweb.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,13 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,12 +21,16 @@ import java.util.Optional;
 public class TrangChu {
     @Autowired
     private MauService mauService;
-
-    @Autowired
-    private SizeService sizeService;
-
     @Autowired
     private SanPhamChitietService sanPhamChitietService;
+    @Autowired
+    private HoaDonService hoaDonService;
+    @Autowired
+    private HoaDonChiTietService hoaDonChiTietService;
+    @Autowired
+    private KhuyenMaiService khuyenMaiService;
+    @Autowired
+    private SizeService sizeService;
 
     private final String UPLOAD_DIR = "src/main/resources/image/";
 
@@ -47,7 +42,11 @@ public class TrangChu {
         return "quanlysanpham";
     }
 
-    @GetMapping("/giohang")
+    @Autowired
+    private thuonghieuService thuonghieuservice;
+
+
+    /* @GetMapping("/giohang")
     public String giohang(Model model) {
         List<sanphamchitiet> sanpham;
         model.addAttribute("sanpham", sanPhamChitietService.findAll());
@@ -55,7 +54,24 @@ public class TrangChu {
         List<thuonghieu> ThuongHieu;
         model.addAttribute("ThuongHieu", thuonghieuservice.getAllThuongHieus());
         return "TrangGioHang";
+    } */
+
+    @GetMapping("/addGiohang")
+    public String addGiohang(Model model) {
+        model.addAttribute("giohang", new hoadonchitiet());
+        return "TrangGioHang";
     }
+
+
+    @PostMapping("/savegiohang")
+    public String saveGioHang(@ModelAttribute("HoaDonChiTiet") hoadonchitiet hoadonchitiet
+    ) throws IOException {
+
+        hoaDonService.save(hoadonchitiet.getIdHD());
+        return "redirect:/qlyHoaDon";
+    }
+
+
     @GetMapping("/ThongtinSP")
     public String sanphamchitiet(@RequestParam("idsp") Integer idsp, Model model) {
         //hiện danh sách sản phẩm :
@@ -72,12 +88,8 @@ public class TrangChu {
         //hiện danh sách thương hiệu :
         List<thuonghieu> ThuongHieu;
         model.addAttribute("ThuongHieu", thuonghieuservice.getAllThuongHieus());
-        return "TrangThongTinSP";
+        return "ThongTinSP";
     }
-
-
-    @Autowired
-    private thuonghieuService thuonghieuservice;
 
     @GetMapping("/trangchu")
     public String home(Model model) {
@@ -102,6 +114,58 @@ public class TrangChu {
         return "quanlymau";
     }
 
+    @GetMapping("/qlyHoaDon")
+    public String hoadon(Model model) {
+        var hoahon = hoaDonService.getAllHoaDons();
+        model.addAttribute("HoaDon", hoaDonService.getAllHoaDons());
+        return "HoaDon";
+    }
+
+    @GetMapping("/addHoaDon")
+    public String addHoaDon(Model model) {
+        model.addAttribute("hoadon", new HoaDon());
+        return "ViewThemHoaDon";
+    }
+    @PostMapping("/savehoadon")
+    public String saveHoaDon(@ModelAttribute("HoaDon") HoaDon hoaDon
+    ) throws IOException {
+
+        hoaDonService.save(hoaDon);
+        return "redirect:/qlyHoaDon";
+    }
+
+
+    @GetMapping("/qlySize")
+    public String Size(Model model) {
+        model.addAttribute("size", sizeService.getAllSizes());
+        return "quanlysize";
+    }
+
+    @GetMapping("/qlyHoaDonChiTiet")
+    public String hoadonchitiet(Model model) {
+        model.addAttribute("bronchitics", hoaDonChiTietService.getAllHoaDonChiTiets());
+        return "HoaDonChiTiet";
+    }
+
+    @GetMapping("/qlyKhuyenMai")
+    public String khuyenmai(Model model) {
+        model.addAttribute("KhuyenMai", khuyenMaiService.getAllKhuyenMais());
+        return "KhuyenMai";
+    }
+
+    @GetMapping("/addKhuyenMai")
+    public String addKhuyenMai(Model model) {
+        model.addAttribute("khuyenmai", new KhuyenMai());
+        return "ViewThemKhuyenMai";
+    }
+    @PostMapping("/savekhuyenmai")
+    public String saveKhuyenMai(@ModelAttribute("KhuyenMai") KhuyenMai khuyenMai
+    ) throws IOException {
+
+        khuyenMaiService.save(khuyenMai);
+        return "redirect:/qlyKhuyenMai";
+    }
+
     //thêm
     @GetMapping("/add")
     public String addPhoneForm(Model model) {
@@ -111,13 +175,14 @@ public class TrangChu {
     @PostMapping("/save")
     public String saveMau(@ModelAttribute("mau") mau maus
     ) throws IOException {
+
         mauService.saveMau(maus);
         return "redirect:/qlyMau";
     }
 
     //sửa
     @GetMapping("/edit")
-    public String editMau(@RequestParam("idmau") Long idmau, Model model) {
+    public String editMau(@RequestParam("idmau") Integer idmau, Model model) {
         Optional<mau> mau = mauService.findMauByIdmau(idmau);
         mau.ifPresent(p -> model.addAttribute("maus", p));
         return "viewSua";
@@ -137,6 +202,7 @@ public class TrangChu {
         mauService.deleteMau(idmau);
         return "redirect:/qlyMau";
     }
+
 
 
     //hình ảnh :
