@@ -1,4 +1,4 @@
-package com.example.projectweb.Service.impl;
+package com.example.projectweb.Service.IMPL;
 
 import com.example.projectweb.Model.QuanLyNguoiDung;
 import com.example.projectweb.Model.QuanLyNguoiDungId;

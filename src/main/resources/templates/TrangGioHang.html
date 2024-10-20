@@ -272,46 +272,54 @@
 
     <div class="table-responsive">
         <h1 style="font-size: 25px;color: #073a72">GIỎ HÀNG</h1>
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th></th>
-                <th></th>
-                <th>Sản phẩm</th>
-                <th>Giá</th>
-                <th>Số lượng</th>
-                <th>Tạm Tính</th>
-            </tr>
-            </thead>
-            <tbody>
+        <!-- Kiểm tra nếu giỏ hàng trống -->
+        <div th:if="${#lists.isEmpty(cartItems)}">
+            <h2>CHƯA CÓ SẢN PHẨM NÀO TRONG CỬA HÀNG</h2>
+        </div>
 
-            <tr th:each="sanpham : ${sanpham}">
-                <td>
-                    <div class="del-ng text-center">
-                    <a href="#" class="del">
-                        <i class="bi bi-x-circle"></i>
-                    </a>
-                    </div>
-                </td>
-                <td>
-                    <img th:src="@{'/image/'+${sanpham.hinhAnh}}" class="img-thumbnail" width="60" height="60"/>
-                </td>
-                <td>
-                    <span th:text="${sanpham.tensp}"></span> <span>màu</span> <span></span>
-                    <p></p>
-                    <span>Size</span>
-                </td>
-                <td th:text="${sanpham.gia}" ></td>
-                <td></td>
-                <td>
-
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
+        <!-- Hiển thị bảng giỏ hàng khi có sản phẩm -->
+        <div th:if="${!#lists.isEmpty(cartItems)}">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Tạm Tính</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${cartItems}">
+                    <td>
+                        <div class="del-ng text-center">
+                            <a th:href="@{/giohang/remove(idsp=${item.sanPham.idSPCT})}" class="del">
+                                <i class="bi bi-x-circle"></i>
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <img th:src="@{'/image/'+${item.sanPham.hinhAnh}}" class="img-thumbnail" width="60" height="60"/>
+                    </td>
+                    <td>
+                        <span th:text="${item.sanPham.tensp}"></span>
+                        <span>màu </span><span th:text="${item.mau.tenmau}"></span>
+                        <p></p>
+                        <span>Size</span> <span th:text="${item.size.kichthuoc}" ></span>
+                    </td>
+                    <td th:text="${item.sanPham.gia}"></td>
+                    <td>
+                        <input type="number" th:value="${item.HDCT.soluong}" min="1" class="form-control" style="width: 80px;">
+                    </td>
+                    <td th:text="${item.sanPham.gia * item.HDCT.soluong}" ></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
+
 
 
 

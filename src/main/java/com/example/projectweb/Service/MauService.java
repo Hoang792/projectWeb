@@ -10,6 +10,6 @@ public interface MauService {
 
     void saveMau(mau maus);
     void deleteMau(Long id);
-    Optional<mau> findMauByIdmau(Long idmau);
+    Optional<mau> findMauByIdmau(Integer idmau);
     List<mau> searchMaus(String query);
 }

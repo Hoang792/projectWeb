@@ -1,7 +1,7 @@
 package com.example.projectweb.Service;
 
 import com.example.projectweb.Model.sanphamchitiet;
-import com.example.projectweb.Service.impl.SanPhamChiTietIMPL;
+import com.example.projectweb.Service.IMPL.SanPhamChiTietIMPL;
 
 
 import java.util.List;

@@ -10,13 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,6 +44,52 @@ public class TrangChu {
 
     @Autowired
     private thuonghieuService thuonghieuservice;
+
+
+    /* @GetMapping("/giohang")
+    public String giohang(Model model) {
+        List<sanphamchitiet> sanpham;
+        model.addAttribute("sanpham", sanPhamChitietService.findAll());
+
+        List<thuonghieu> ThuongHieu;
+        model.addAttribute("ThuongHieu", thuonghieuservice.getAllThuongHieus());
+        return "TrangGioHang";
+    } */
+
+    @GetMapping("/addGiohang")
+    public String addGiohang(Model model) {
+        model.addAttribute("giohang", new hoadonchitiet());
+        return "TrangGioHang";
+    }
+
+
+    @PostMapping("/savegiohang")
+    public String saveGioHang(@ModelAttribute("HoaDonChiTiet") hoadonchitiet hoadonchitiet
+    ) throws IOException {
+
+        hoaDonService.save(hoadonchitiet.getIdHD());
+        return "redirect:/qlyHoaDon";
+    }
+
+
+    @GetMapping("/ThongtinSP")
+    public String sanphamchitiet(@RequestParam("idsp") Integer idsp, Model model) {
+        //hiện danh sách sản phẩm :
+        List<sanphamchitiet> sanpham;
+        model.addAttribute("sanpham", sanPhamChitietService.findById(idsp));
+        model.addAttribute("idsp", idsp);
+
+        List<size> Size;
+        model.addAttribute("Size", sizeService.getAllSizes());
+
+        List<mau> Mau;
+        model.addAttribute("Mau", mauService.getAllMaus());
+
+        //hiện danh sách thương hiệu :
+        List<thuonghieu> ThuongHieu;
+        model.addAttribute("ThuongHieu", thuonghieuservice.getAllThuongHieus());
+        return "ThongTinSP";
+    }
 
     @GetMapping("/trangchu")
     public String home(Model model) {
@@ -139,7 +182,7 @@ public class TrangChu {
 
     //sửa
     @GetMapping("/edit")
-    public String editMau(@RequestParam("idmau") Long idmau, Model model) {
+    public String editMau(@RequestParam("idmau") Integer idmau, Model model) {
         Optional<mau> mau = mauService.findMauByIdmau(idmau);
         mau.ifPresent(p -> model.addAttribute("maus", p));
         return "viewSua";
