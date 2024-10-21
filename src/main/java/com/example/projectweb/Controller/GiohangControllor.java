@@ -1,9 +1,6 @@
 package com.example.projectweb.Controller;
 
-import com.example.projectweb.Model.hoadonchitiet;
-import com.example.projectweb.Model.mau;
-import com.example.projectweb.Model.sanphamchitiet;
-import com.example.projectweb.Model.size;
+import com.example.projectweb.Model.*;
 import com.example.projectweb.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +24,8 @@ public class GiohangControllor {
     private SizeService sizeService;
     @Autowired
     private HoaDonChiTietService hoaDonChiTietService;
+    @Autowired
+    private thuonghieuService ThuonghieuService;
 
     @GetMapping("/giohang/add")
     public String addToCart(@RequestParam("idsp") Integer idsp,
@@ -79,6 +78,9 @@ public class GiohangControllor {
         model.addAttribute("cartItems", giohangservice.getCart().getItems().values());
 
         model.addAttribute("totalPrice", giohangservice.getCart().getTotalPrice());
+
+        List<thuonghieu> ThuongHieu;
+        model.addAttribute("ThuongHieu", ThuonghieuService.getAllThuongHieus());
 
         return "TrangGioHang"; // Trả về trang giỏ hàng
     }

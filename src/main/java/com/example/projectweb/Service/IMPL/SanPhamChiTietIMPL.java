@@ -40,8 +40,8 @@ public class SanPhamChiTietIMPL implements SanPhamChitietService {
     }
 
     @Override
-    public List<sanphamchitiet> findAllByTenspContaining(String tensp) {
-        return sanPhamChiTietRepository.findAllByTenspContaining(tensp);
+    public List<sanphamchitiet> SearchSP(String query) {
+        return sanPhamChiTietRepository.findByTenspContaining(query);
     }
 
 }
