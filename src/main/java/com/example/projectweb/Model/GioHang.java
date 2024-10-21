@@ -21,7 +21,7 @@ public class GioHang {
     }
 
     public void removeItem(sanphamchitiet sanpham) {
-        items.remove(Long.valueOf(sanpham.getIdSPCT()), sanpham); // Xóa sản phẩm khỏi giỏ hàng dựa trên ID
+        items.remove(Long.valueOf(sanpham.getIdSPCT())); // Xóa sản phẩm khỏi giỏ hàng dựa trên ID
     }
 
     public Map<Long, GioHangItem> getItems() {

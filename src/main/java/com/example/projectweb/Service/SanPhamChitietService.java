@@ -12,6 +12,6 @@ public interface SanPhamChitietService {
     void save(sanphamchitiet spct);
     void deleteById(Integer tensp);
     sanphamchitiet findById(Integer idsp);
-    List<sanphamchitiet> findAllByTenspContaining(String tensp);
+    List<sanphamchitiet> SearchSP(String query);
 
 }

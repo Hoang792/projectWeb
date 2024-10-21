@@ -45,6 +45,12 @@ public class TrangChu {
     @Autowired
     private thuonghieuService thuonghieuservice;
 
+    @GetMapping("/search")
+    public String searchPhones(@RequestParam("query") String query, Model model) {
+        List<sanphamchitiet> sp = sanPhamChitietService.SearchSP(query);
+        model.addAttribute("sanpham", sp);
+        return "index";
+    }
 
     /* @GetMapping("/giohang")
     public String giohang(Model model) {

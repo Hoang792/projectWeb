@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
+
+        .d-flex {
+            display: flex; /* Đảm bảo div là flex container */
+            align-items: center; /* Căn giữa các phần tử dọc theo trục chính */
+        }
+
+        .d-flex a {
+            display: flex; /* Để biểu tượng và chữ nằm trên cùng một hàng */
+            align-items: center; /* Căn giữa biểu tượng và chữ */
+            text-decoration: none;
+            color: black;
+            font-size: 12px;
+        }
+
         .nav-item.dropdown:hover .dropdown-menu {
             display: block; /* Hiển thị menu khi hover */
             border-radius: 0;
@@ -269,7 +283,6 @@
 
 <!-- Nội dung chính -->
 <div class="container">
-
     <div class="table-responsive">
         <h1 style="font-size: 25px;color: #073a72">GIỎ HÀNG</h1>
         <!-- Kiểm tra nếu giỏ hàng trống -->
@@ -308,14 +321,52 @@
                         <p></p>
                         <span>Size</span> <span th:text="${item.size.kichthuoc}" ></span>
                     </td>
-                    <td th:text="${item.sanPham.gia}"></td>
+                    <td th:text="${item.sanPham.gia}" class="price"></td>
                     <td>
                         <input type="number" th:value="${item.HDCT.soluong}" min="1" class="form-control" style="width: 80px;">
                     </td>
-                    <td th:text="${item.sanPham.gia * item.HDCT.soluong}" ></td>
+                    <td th:text="${item.sanPham.gia * item.HDCT.soluong}" class="price" ></td>
                 </tr>
+
                 </tbody>
             </table>
+            <!--bảng tổng tiền-->
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+
+                        <div class="table-responsive">
+                            <h1 style="font-size: 20px;color: #073a72">CỘNG GIỎ HÀNG</h1>
+                            <div>
+                                <table class="table table-bordered">
+                                    <thead>
+
+                                    </thead>
+
+                                    <tbody>
+                                    <tr>
+                                        <td><span style="font-weight: bold">Tạm tính</span> </td>
+                                        <td><span th:text="${totalPrice}" class="price" ></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-weight: bold">Giao hàng</span> </td>
+                                        <td><span>Phí vận chuyển sẽ báo sau.
+                                            Vận chuyển đến Hà Nội.</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span style="font-weight: bold">Tổng</span></td>
+                                        <td><span  style="font-weight: bold" th:text="${totalPrice}" class="price" ></span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </div>
@@ -360,6 +411,16 @@
         <p class="mb-0">&copy; 2024 Shop. All Rights Reserved.</p>
     </div>
 </footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const prices = document.querySelectorAll('.price');
+        prices.forEach(price => {
+            const value = parseInt(price.innerText);
+            price.innerText = value.toLocaleString('vi-VN') + ' đ';
+        });
+    });
+</script>
 
 <!-- Bootstrap JS -->
 
