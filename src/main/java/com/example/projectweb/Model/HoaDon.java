@@ -41,7 +41,7 @@ public class HoaDon {
 
     @ManyToOne
     @JoinColumn(name = "idVoucher")
-    private Voucher voucher;
+    private voucher voucher;
 
 
 }

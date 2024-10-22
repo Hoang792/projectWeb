@@ -6,14 +6,17 @@
 
     <style>
 
-        *{
-            font-family: Arial, Helvetica, sans-serif;
+        .d-flex {
+            display: flex; /* Đảm bảo div là flex container */
+            align-items: center; /* Căn giữa các phần tử dọc theo trục chính */
         }
-        .carousel-item img {
-            width: 851px;
-            height: 315px;
-            object-fit: cover;
-            margin: 0 auto;
+
+        .d-flex a {
+            display: flex; /* Để biểu tượng và chữ nằm trên cùng một hàng */
+            align-items: center; /* Căn giữa biểu tượng và chữ */
+            text-decoration: none;
+            color: black;
+            font-size: 12px;
         }
 
         .nav-item.dropdown:hover .dropdown-menu {
@@ -31,7 +34,7 @@
         }
 
         .search-form input {
-            width: 300px;
+            width: 200px;
         }
 
         .navbar-brand img {
@@ -39,27 +42,39 @@
             margin-right: 10px;
         }
 
-        .d-flex {
-            display: flex; /* Đảm bảo div là flex container */
-            align-items: center; /* Căn giữa các phần tử dọc theo trục chính */
+        .product-images img {
+            cursor: pointer;
+            border: 1px solid #ddd;
+            transition: transform 0.3s ease;
         }
 
-        .d-flex a {
-            display: flex; /* Để biểu tượng và chữ nằm trên cùng một hàng */
-            align-items: center; /* Căn giữa biểu tượng và chữ */
+        .product-images img:hover {
+            transform: scale(1.1);
+            border-color: #aaa;
+        }
+
+        .display-6 a{
             text-decoration: none;
             color: black;
-            font-size: 12px;
         }
 
-        .card-body-mota a {
-            text-decoration: none; /* Bỏ gạch chân */
-            color: black; /* Màu chữ mặc định */
-            transition: color 0.3s; /* Hiệu ứng chuyển màu mượt mà */
+        .col-md-4 a{
+            text-decoration: none;
+
         }
 
-        .card-body-mota a:hover {
-            color: blue; /* Màu chữ khi hover */
+        .fixed-buttons button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar-item i {
+            font-size: 1.2em;
         }
 
         .top-bar {
@@ -79,92 +94,92 @@
             border-radius: 20px;
         }
 
-        .card-body-sp img {
-            width: 100%; /* Chiều rộng 100% của thẻ chứa */
-            height: 250px; /* Chiều cao cố định */
-            object-fit: cover; /* Giữ tỷ lệ hình ảnh và cắt nếu cần */
-        }
+        .navigation-header-list {
+            display: flex;
+            list-style: none;
 
-        .card-body-sp {
-            position: relative; /* Để có thể sử dụng position:absolute cho nút */
         }
-
-        .view-info-button {
-            text-align: center;
-            position: absolute; /* Đặt nút ở vị trí tuyệt đối trong thẻ chứa */
-            width: 90%;
-            bottom: 25px; /* Căn chỉnh nút ở dưới hình ảnh */
-            left: 50%; /* Căn giữa theo chiều ngang */
-            transform: translate(-50%, 20px); /* Dịch chuyển nút ra khỏi vị trí ban đầu (xuống 20px) */
-            background-color: rgba(0, 0, 0, 0.7); /* Nền tối mờ */
-            color: white; /* Màu chữ trắng */
-            background-color: #0b7bec;
-            padding: 10px 20px; /* Khoảng cách bên trong nút */
-            border-radius: 5px; /* Bo góc */
-            text-decoration: none; /* Bỏ gạch chân */
-            opacity: 0; /* Ẩn nút */
-            visibility: hidden; /* Ẩn nút */
-            transition: transform 0.5s ease, opacity 0.5s ease, visibility 0.5s ease; /* Hiệu ứng chuyển đổi */
-        }
-
-        .card-body-sp:hover .view-info-button {
-            transform: translate(-50%, 0); /* Trở về vị trí ban đầu */
-            opacity: 1; /* Hiện nút */
-            visibility: visible; /* Đặt visibility thành visible */
-        }
-
-        .custom-tab {
-            background-color: #3b4a6b;
-            color: white;
-            padding: 10px 20px;
-            display: inline-block;
+        .navigation-header-item {
+            padding: 10px 10px 10px ;
             position: relative;
-            font-size: 16px;
-            font-weight: bold;
-            height: 40px;
-            line-height: 20px;
+
         }
-        .custom-tab::after {
-            content: '';
+        .navigation-header{
+            margin-left: -20px;
+        }
+
+        .navigation-header-item:first-child::after {
+            content: "";
+            display: block;
             position: absolute;
-            top: 0;
-            left: 100%;
-            width: 0;
-            height: 0;
-            border-left: 40px solid #3b4a6b;
-            border-top: 40px solid transparent;
+            border-right: 1px solid #656565;
+            height: 20px;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+
         }
-        .custom-tab-container {
-            border-bottom: 2px solid #3b4a6b;
-            margin-bottom: 10px;
-        }
-        .view-more {
-            float: right;
-            color: #3b4a6b;
-            font-size: 16px;
-            font-weight: bold;
+        .navigation-header-link {
+            color: #8a8a8f;
             text-decoration: none;
-            line-height: 40px;
+        }
+
+        .navigation-header-link:hover {
+            color: #8686be;
+            text-decoration:underline;
+            cursor: pointer;
+        }
+
+        .form-section h5 {
+            font-weight: bold;
+        }
+        .order-summary {
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .order-summary table {
+            width: 100%;
+        }
+        .order-summary table th, .order-summary table td {
+            padding: 10px;
+            text-align: left;
+        }
+        .order-summary table th {
+            background-color: #f8f9fa;
+        }
+        .order-summary .total {
+            font-weight: bold;
+        }
+        .payment-method {
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .btn-order {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
         }
 
     </style>
 
     <title>Shop</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
 </head>
 <body>
+<!-- Navbar -->
 
-
-<!--top trang-->
 <div class=" bg-dark">
     <div class="container">
         <div class="top-bar d-flex justify-content-between align-items-center ">
@@ -198,12 +213,12 @@
                 <a class="navbar-brand" href="#">
                     <img src="https://capvirgo.com/wp-content/uploads/2017/11/logo-3.png" alt="Logo">
                 </a>
-                <form  action="/search" class="d-flex search-form ml-auto">
-                    <input class="form-control me-2 w-450" type="text" name="query" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
+                <form class="d-flex search-form ml-auto">
+                    <input class="form-control me-2 w-450" type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
                     <button class="btn btn-outline-success w-40" type="submit">Tìm kiếm</button>
                 </form>
-                <div class="d-flex ">
-                    <a href="/giohang" style="text-decoration: none;color: black;font-size: 12px" class="ms-3"><box-icon type='solid' name='cart-alt'></box-icon>GIỎ HÀNG</a>
+                <div class="d-flex">
+                    <a href="" style="text-decoration: none;color: black;font-size: 12px" class="ms-3"><box-icon type='solid' name='cart-alt'></box-icon>GIỎ HÀNG CỦA BẠN</a>
 
                 </div>
             </div>
@@ -212,9 +227,9 @@
 </div>
 <!-- danh mục con -->
 
-<div class="bg-primary" style=" background-color: #466082 !important;">
+<div class="bg-dark">
     <div class="container ">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style=" background-color: #466082 !important;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -263,72 +278,114 @@
     </div>
 </div>
 
-<!-- Slideshow -->
-<div class="container mt-4">
-<div id="productSlideshow" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="/image/slide1.jpg" class="d-block w-100" alt="Slide 1">
-        </div>
-        <div class="carousel-item">
-            <img src="/image/slide2.jpg" class="d-block w-100" alt="Slide 2">
-        </div>
-        <div class="carousel-item">
-            <img src="/image/slide3.jpg" class="d-block w-100" alt="Slide 3">
-        </div>
+<!-- Navigation -->
+<div class="container">
+    <div class="navigation-header">
+        <ul class="navigation-header-list">
+            <li class="navigation-header-item"><a class="navigation-header-link" href="/trangchu" title="Trang chủ">Trang chủ</a></li>
+            <li class="navigation-header-item">Thanh toán</li>
+        </ul>
     </div>
-    <!-- Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#productSlideshow" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#productSlideshow" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
 </div>
 
 <!-- Nội dung chính -->
 <div class="container mt-4">
-
-    <p>Khám phá hàng ngàn sản phẩm với giá ưu đãi!</p>
-
-    <!-- Hiển thị sản phẩm -->
-    <div th:each="th : ${ThuongHieu}">
-        <div class="custom-tab-container">
-            <div class="custom-tab" th:text="${th.tenthuonghieu}" ></div>
-            <a href="#" class="view-more">Xem thêm</a>
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-3 mb-4" th:each="sp : ${sanpham}" th:if="${sp.idThuongHieu.tenthuonghieu == th.tenthuonghieu}">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-body-sp position-relative">
-
-                            <img th:src="@{'/image/' + ${sp.hinhAnh}}"
-                                 class="card-img-top img-thumbnail product"/>
-                            <a th:href="@{/ThongtinSP(idsp=${sp.idSPCT})}" class="view-info-button">Xem Thông Tin Sản Phẩm</a>
-                        </div>
-                        <div class="card-body-mota">
-                            <a th:href="@{/ThongtinSP(idsp=${sp.idSPCT})}">MUA NGAY</a>
-                            <h5 class="card-title" th:text="${sp.tensp}"></h5>
-                            <p class="card-text">
-                                <span style="font-size: 18px;color: red;font-weight: bold" th:text="${sp.gia}" class="price"></span>
-                            </p>
-                        </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="mb-3">THÔNG TIN THANH TOÁN</h4>
+            <p class="form-text">+ Lấy địa chỉ từ số điện thoại mua hàng trước đây</p>
+            <form>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="phone" class="form-label">Số điện thoại *</label>
+                        <input type="text" class="form-control" placeholder="Nhập số điện thoại" id="phone" value="">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">Địa chỉ email *</label>
+                        <input type="email" class="form-control" placeholder="Nhập email" id="email" value="">
                     </div>
                 </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Địa chỉ *</label>
+                    <input type="text" class="form-control" placeholder="Toà nhà, số nhà, tên đường" id="address" value="">
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Họ và tên *</label>
+                    <input type="text" class="form-control" placeholder="Nhập họ và tên" id="name" value="">
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="createAccount">
+                    <label class="form-check-label" for="createAccount">
+                        Tạo tài khoản mới?
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="shipToDifferentAddress">
+                    <label class="form-check-label" for="shipToDifferentAddress">
+                        Giao hàng tới địa chỉ khác?
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <label for="orderNotes" class="form-label">Ghi chú đơn hàng (tuỳ chọn)</label>
+                    <textarea class="form-control" id="orderNotes" placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn." rows="3"></textarea>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <div class="order-summary">
+                <h5>ĐƠN HÀNG CỦA BẠN</h5>
+                <table  class="table">
+                    <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Tạm tính</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="item : ${cartItems}">
+                        <td><span th:text="${item.sanPham.tensp}" ></span> <span style="font-weight: bold">x</span> <span style="font-weight: bold" th:text="${item.HDCT.soluong}" ></span> <br> Màu: <span th:text="${item.mau.tenmau}" ></span>  <br> Size: <span th:text="${item.size.kichthuoc}" ></span> <br> </td>
+                        <td th:text="${item.sanPham.gia * item.HDCT.soluong}" class="price" ></td>
+                    </tr>
+                    <tr>
+                        <td>Tạm tính</td>
+                        <td th:text="${totalPrice}" class="price" ></td>
+                    </tr>
+                    <tr>
+                        <td>Giao hàng</td>
+                        <td>Phí vận chuyển sẽ báo sau.</td>
+                    </tr>
+                    <tr class="total">
+                        <td>Tổng</td>
+                        <td th:text="${totalPrice}" class="price" ></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
+            <div class="payment-method">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentMethod" id="cashOnDelivery" checked>
+                    <label class="form-check-label" for="cashOnDelivery">
+                        Trả tiền mặt khi nhận hàng
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer">
+                    <label class="form-check-label" for="bankTransfer">
+                        CHUYỂN KHOẢN NGÂN HÀNG - ÁP DỤNG VỚI ĐƠN ORDER
+                    </label>
+                </div>
+            </div>
+            <form action="/TTthanhcong" method="get">
+                <button type="submit" class="btn btn-primary mt-3">Đặt hàng</button>
+            </form>
         </div>
     </div>
-
 </div>
 
+
 <!-- Footer -->
-<footer class="bg-dark text-white mt-4">
+<footer class="bg-dark text-white mt-5">
     <div class="container">
         <div class="row py-4">
             <!-- Thông tin liên hệ -->
@@ -336,7 +393,7 @@
                 <h5>Thông tin liên hệ</h5>
                 <p><i class="fas fa-map-marker-alt"></i> 123 Đường ABC, Quận 1, TP. HCM</p>
                 <p><i class="fas fa-phone"></i> 0981.706.588</p>
-                <p><i class="fas fa-envelope"></i>  capvirgo2h@gmail.com</p>
+                <p><i class="fas fa-envelope"></i> capvirgo2h@gmail.com</p>
             </div>
 
             <!-- Liên kết hữu ích -->
@@ -376,6 +433,7 @@
 </script>
 
 <!-- Bootstrap JS -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

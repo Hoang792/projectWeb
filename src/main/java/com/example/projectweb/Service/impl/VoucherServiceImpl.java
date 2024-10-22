@@ -1,6 +1,7 @@
 package com.example.projectweb.Service.IMPL;
 
-import com.example.projectweb.Model.Voucher;
+
+import com.example.projectweb.Model.voucher;
 import com.example.projectweb.Repository.VoucherRepository;
 import com.example.projectweb.Service.VoucherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +17,26 @@ public class VoucherServiceImpl implements VoucherService {
     private VoucherRepository voucherRepository;
 
     @Override
-    public List<Voucher> getAllVouchers() {
+    public List<voucher> getAllVouchers() {
         return voucherRepository.findAll();
     }
 
     @Override
-    public Optional<Voucher> findVoucherById(Integer idVoucher) {
+    public void saveVoucher(voucher Voucher){voucherRepository.save(Voucher);
+    }
+
+    @Override
+    public void deleteVoucher(Integer idVoucher) {
+        voucherRepository.deleteById(idVoucher);
+    }
+
+    @Override
+    public Optional<voucher> findVoucherById(Integer idVoucher) {
         return voucherRepository.findById(idVoucher);
     }
 
     @Override
-    public List<Voucher> searchVouchers(String query) {
+    public List<voucher> searchVouchers(String query) {
         return voucherRepository.findByTenvoucherContainingIgnoreCase(query);
     }
 }
