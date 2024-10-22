@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm sản phẩm</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #343a40;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="col-3"></div>
+<div class="container col-6">
+    <h1>Sửa sản phẩm </h1>
+    <div class="col-md-auto">
+        <form th:object="${sanpham}" th:action="@{/saveSanPham}" method="post" enctype="multipart/form-data">
+            <input type="hidden" th:field="*{idSPCT}">
+            <div class="form-group">
+                <label th:text="'Tên sản phẩm '" th:for="name"></label>
+                <input type="text" th:field="*{tensp}" class="form-control" placeholder="Nhập tên sản phẩm" required/>
+                <label th:text="'Hình ảnh '" th:for="file"></label>
+                <!-- Hiển thị ảnh cũ -->
+                <div>
+                    <img th:src="@{${'/image/'+sanpham.hinhAnh} }" alt="Hình ảnh sản phẩm" style="max-width: 100px; max-height: 100px;"/>
+                </div>
+                <!-- Trường nhập file, không bắt buộc -->
+                <input type="file" name="file" class="form-control-file" />
+                <!--Chọn thương hiệu-->
+                <label th:text="'Thương hiệu '" th:for="idThuongHieu"></label>
+
+                <select id="thuonghieu" th:field="*{idThuongHieu}" class="form-control" required>
+                    <option value="" disabled selected>Chọn thương hiệu</option>
+                    <option th:each="thuongHieu : ${ThuongHieu}"
+                            th:value="${thuongHieu.idthuonghieu}"
+                            th:text="${thuongHieu.tenthuonghieu}"></option>
+                </select>
+                <!--Chọn màu -->
+                <label th:text="'Màu'" th:for="idMau"></label>
+
+                <select id="mau" th:field="*{idMau}" class="form-control" required>
+                    <option value="" disabled selected>Chọn màu</option>
+                    <option th:each="mau : ${Mau}"
+                            th:value="${mau.idmau}"
+                            th:text="${mau.tenmau}"></option>
+                </select>
+                <!--Chọn size -->
+                <label th:text="'Size'" th:for="idSize"></label>
+
+                <select id="size" th:field="*{idSize}" class="form-control" required>
+                    <option value="" disabled selected>Chọn Size</option>
+                    <option th:each="size : ${Size}"
+                            th:value="${size.idsize}"
+                            th:text="${size.kichthuoc}"></option>
+                </select>
+
+                <label th:text="'Giá '" th:for="name"></label>
+                <input type="number" th:field="*{gia}" class="form-control" placeholder="Nhập giá sản phẩm" required/>
+                <label th:text="'Mô tả '" th:for="name"></label>
+                <textarea th:field="*{mota}" class="form-control" rows="3" placeholder="Nhập mô tả" required></textarea>
+
+                <label th:text="'Số lượng'" th:for="name"></label>
+                <input type="number" th:field="*{soLuong}" class="form-control" placeholder="Nhập số lượng sản phẩm" required/>
+
+                <div class="text-center">
+                    <input type="submit" class="btn btn-success" value="Save"/>
+                    <a href="/quanlysanpham" class="btn btn-secondary ml-2">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -8,6 +8,10 @@ import java.util.Optional;
 public interface SizeService {
     List<size> getAllSizes();
 
+    void saveSize(size Size);
+
+    void deleteSize(Integer idsize);
+
     Optional<size> findSizeByIdsize(Integer idsize);
 
     List<size> searchSizes(String query);

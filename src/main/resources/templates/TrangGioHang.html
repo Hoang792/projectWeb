@@ -316,9 +316,9 @@
                         <img th:src="@{'/image/'+${item.sanPham.hinhAnh}}" class="img-thumbnail" width="60" height="60"/>
                     </td>
                     <td>
-                        <span th:text="${item.sanPham.tensp}"></span>
-                        <span>màu </span><span th:text="${item.mau.tenmau}"></span>
-                        <p></p>
+                        <span th:text="${item.sanPham.tensp}"></span> <br>
+                        <span>màu: </span><span th:text="${item.mau.tenmau}"></span>
+                        <br>
                         <span>Size</span> <span th:text="${item.size.kichthuoc}" ></span>
                     </td>
                     <td th:text="${item.sanPham.gia}" class="price"></td>
@@ -329,6 +329,21 @@
                 </tr>
 
                 </tbody>
+                <table class="table table-bordered">
+                    <tr>
+                        <td>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="display: flex;align-items: center ">
+                                    <input  type="text" class="form-control" placeholder="Mã ưu đãi" style="width: 150px; display: inline; margin-right: 5px">
+                                    <button class="btn btn-primary">Áp dụng</button>
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary">Cập nhật giỏ hàng</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </table>
             <!--bảng tổng tiền-->
             <div class="container mt-4">
@@ -358,14 +373,20 @@
                                         <td><span style="font-weight: bold">Tổng</span></td>
                                         <td><span  style="font-weight: bold" th:text="${totalPrice}" class="price" ></span></td>
                                     </tr>
+
+
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="d-grid" >
+                                <form action="/TThoadon" method="get">
+                                    <button type="submit" class="btn btn-primary btn-block">Thanh Toán</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
 
         </div>
     </div>

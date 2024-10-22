@@ -17,7 +17,6 @@ public class GioHang {
             // Nếu không, thêm sản phẩm mới vào giỏ hàng
             items.put(Long.valueOf(sanpham.getIdSPCT()), new GioHangItem(sanpham, Mau, Size, HDCT));
         }
-
     }
 
     public void removeItem(sanphamchitiet sanpham) {

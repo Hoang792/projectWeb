@@ -79,10 +79,42 @@ public class GiohangControllor {
 
         model.addAttribute("totalPrice", giohangservice.getCart().getTotalPrice());
 
+
+
         List<thuonghieu> ThuongHieu;
         model.addAttribute("ThuongHieu", ThuonghieuService.getAllThuongHieus());
 
         return "TrangGioHang"; // Trả về trang giỏ hàng
+    }
+
+    @GetMapping("/TThoadon")
+    public String viewHD(Model model) {
+
+        // Lấy các mục trong giỏ hàng
+        model.addAttribute("cartItems", giohangservice.getCart().getItems().values());
+
+        model.addAttribute("totalPrice", giohangservice.getCart().getTotalPrice());
+
+
+
+        List<thuonghieu> ThuongHieu;
+        model.addAttribute("ThuongHieu", ThuonghieuService.getAllThuongHieus());
+
+        return "ThongTinDonHang"; // Trả về trang giỏ hàng
+    }
+
+    @GetMapping("/TTthanhcong")
+    public String viewCTHD(Model model) {
+
+        // Lấy các mục trong giỏ hàng
+        model.addAttribute("cartItems", giohangservice.getCart().getItems().values());
+
+        model.addAttribute("totalPrice", giohangservice.getCart().getTotalPrice());
+
+        List<thuonghieu> ThuongHieu;
+        model.addAttribute("ThuongHieu", ThuonghieuService.getAllThuongHieus());
+
+        return "TrangTTthanhCong"; // Trả về trang giỏ hàng
     }
 
 }

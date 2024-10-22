@@ -19,6 +19,9 @@ import java.util.Optional;
 
 @Controller
 public class TrangChu {
+
+
+
     @Autowired
     private MauService mauService;
     @Autowired
@@ -32,35 +35,29 @@ public class TrangChu {
     @Autowired
     private SizeService sizeService;
 
+    @Autowired
+    private VoucherService voucherService;
+
     private final String UPLOAD_DIR = "src/main/resources/image/";
 
     //hiện sp bên trang quản lý sp
-    @GetMapping("/quanlysanpham")
+    /* @GetMapping("/quanlysanpham")
     public String sanpham(Model model) {
         List<sanphamchitiet> sanpham;
         model.addAttribute("sanpham", sanPhamChitietService.findAll());
         return "quanlysanpham";
-    }
+    } */
 
     @Autowired
     private thuonghieuService thuonghieuservice;
 
     @GetMapping("/search")
-    public String searchPhones(@RequestParam("query") String query, Model model) {
+    public String searchSP(@RequestParam("query") String query, Model model) {
         List<sanphamchitiet> sp = sanPhamChitietService.SearchSP(query);
         model.addAttribute("sanpham", sp);
         return "index";
     }
 
-    /* @GetMapping("/giohang")
-    public String giohang(Model model) {
-        List<sanphamchitiet> sanpham;
-        model.addAttribute("sanpham", sanPhamChitietService.findAll());
-
-        List<thuonghieu> ThuongHieu;
-        model.addAttribute("ThuongHieu", thuonghieuservice.getAllThuongHieus());
-        return "TrangGioHang";
-    } */
 
     @GetMapping("/addGiohang")
     public String addGiohang(Model model) {
@@ -140,12 +137,12 @@ public class TrangChu {
         return "redirect:/qlyHoaDon";
     }
 
-
-    @GetMapping("/qlySize")
-    public String Size(Model model) {
-        model.addAttribute("size", sizeService.getAllSizes());
-        return "quanlysize";
+    @GetMapping("/deletehoadon")
+    public String deleteHoaDon(@RequestParam("idhd") Integer idhd) {
+        hoaDonService.deleteById(idhd);
+        return "redirect:/qlyHoaDon";
     }
+
 
     @GetMapping("/qlyHoaDonChiTiet")
     public String hoadonchitiet(Model model) {
@@ -158,6 +155,51 @@ public class TrangChu {
         model.addAttribute("KhuyenMai", khuyenMaiService.getAllKhuyenMais());
         return "KhuyenMai";
     }
+
+
+    @GetMapping("/qlyVoucher")
+    public String voucher(Model model) {
+        model.addAttribute("Voucher", voucherService.getAllVouchers());
+        return "Voucher";
+    }
+
+    // thêm Voucher
+    @GetMapping("/addVoucher")
+    public String addvoucher(Model model) {
+        model.addAttribute("voucher", new voucher());
+        return "ViewThemVoucher";
+    }
+    @PostMapping("/saveVoucher")
+    public String savevoucher(@ModelAttribute("voucher") voucher Voucher
+    ) throws IOException {
+
+        voucherService.saveVoucher(Voucher);
+        return "redirect:/qlyVoucher";
+    }
+    // sửa Voucher
+    @GetMapping("/editvoucher")
+    public String editVoucher(@RequestParam("idVoucher") Integer idVoucher, Model model) {
+        Optional<voucher> Voucher = voucherService.findVoucherById(idVoucher);
+        Voucher.ifPresent(p -> model.addAttribute("voucher", p));
+        return "ViewSuaVoucher";
+    }
+
+    @PostMapping("/updatevoucher")
+    public String updateVoucher(@ModelAttribute("phone") voucher Voucher
+    ) throws IOException {
+
+        voucherService.saveVoucher(Voucher);
+        return "redirect:/qlyVoucher";
+    }
+
+    //xóa Voucher
+    @GetMapping("/deletevoucher")
+    public String deleteVoucher(@RequestParam("idVoucher") Integer idVoucher) {
+        voucherService.deleteVoucher(idVoucher);
+        return "redirect:/qlyVoucher";
+    }
+
+
 
     @GetMapping("/addKhuyenMai")
     public String addKhuyenMai(Model model) {
