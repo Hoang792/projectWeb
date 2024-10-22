@@ -36,12 +36,14 @@
         <h2>Chức năng</h2>
         <ul class="nav flex-column">
             <li class="nav-item"><a class="nav-link" href="/trangquanly">Trang chủ</a></li>
-            <li class="nav-item"><a class="nav-link" href="/quanlysanpham">Quản lý sản phẩm</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Quản lý sản phẩm</a></li>
             <li class="nav-item"><a class="nav-link" href="/qlyKhuyenMai">Quản lý khuyến mãi</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Quản lý người dùng</a></li>
             <li class="nav-item"><a class="nav-link" href="/qlyHoaDon">Quản lý hóa đơn</a></li>
             <li class="nav-item"><a class="nav-link" href="/qlySize">Quản lý size</a></li>
             <li class="nav-item"><a class="nav-link" href="/qlyMau">Quản lý màu</a></li>
+            <li class="nav-item"><a class="nav-link" href="/qlyThuongHieu">Quản lý thương hiệu</a></li>
+            <li class="nav-item"><a class="nav-link" href="/qlyVoucher">Quản lý Voucher</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Doanh thu</a></li>
         </ul>
     </div>
@@ -69,15 +71,15 @@
 
                 <tr th:each="hoadon : ${HoaDon}">
                     <td th:text="${hoadon.idhd}"></td>
-                    <td th:text="${hoadon.nguoidung}"></td>
-                    <td th:text="${hoadon.ngaylap}"></td>
+                    <td th:text="${hoadon.nguoiDung}"></td>
+                    <td th:text="${#dates.format(hoadon.ngaylap, 'dd/MM/yyyy')}"></td>
                     <td th:text="${hoadon.tongtien}"></td>
-                    <td th:text="${hoadon.trangthai}"></td>
+                    <td th:text="${hoadon.trangthai == 1 ? 'Hoạt động' : 'Ngừng'}"></td>
                     <td th:text="${hoadon.khuyenMai}"></td>
                     <td th:text="${hoadon.voucher}"></td>
                     <td>
-                        <a th:href="@{/edit(idHD=${hoadon.idhd})}" class="btn btn-primary">Sửa</a>
-                        <a th:href="@{/delete(idHD=${hoadon.idhd})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?');">Xóa</a>
+                        <a th:href="@{/edit(idhd=${hoadon.idhd})}" class="btn btn-primary">Sửa</a>
+                        <a th:href="@{/deletehoadon(idhd=${hoadon.idhd})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?');">Xóa</a>
                     </td>
                 </tr>
 

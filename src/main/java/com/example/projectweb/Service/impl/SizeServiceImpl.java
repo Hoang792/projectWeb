@@ -16,6 +16,15 @@ public class SizeServiceImpl implements SizeService {
     private SizeRepository sizeRepository;
 
     @Override
+    public void saveSize(size Size){sizeRepository.save(Size);
+    }
+
+    @Override
+    public void deleteSize(Integer idsize) {
+        sizeRepository.deleteById(idsize);
+    }
+
+    @Override
     public List<size> getAllSizes() {
         return (List<size>) sizeRepository.findAll();
     }

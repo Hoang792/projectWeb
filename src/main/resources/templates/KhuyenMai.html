@@ -36,12 +36,14 @@
         <h2>Chức năng</h2>
         <ul class="nav flex-column">
             <li class="nav-item"><a class="nav-link" href="/trangquanly">Trang chủ</a></li>
-            <li class="nav-item"><a class="nav-link" href="/quanlysanpham">Quản lý sản phẩm</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Quản lý sản phẩm</a></li>
             <li class="nav-item"><a class="nav-link" href="/qlyKhuyenMai">Quản lý khuyến mãi</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Quản lý người dùng</a></li>
             <li class="nav-item"><a class="nav-link" href="/qlyHoaDon">Quản lý hóa đơn</a></li>
-            <li class="nav-item"><a class="nav-link" href="/quanlysize">Quản lý size</a></li>
+            <li class="nav-item"><a class="nav-link" href="/qlySize">Quản lý size</a></li>
             <li class="nav-item"><a class="nav-link" href="/qlyMau">Quản lý màu</a></li>
+            <li class="nav-item"><a class="nav-link" href="/qlyThuongHieu">Quản lý thương hiệu</a></li>
+            <li class="nav-item"><a class="nav-link" href="/qlyVoucher">Quản lý Voucher</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Doanh thu</a></li>
         </ul>
     </div>
@@ -56,8 +58,8 @@
                 <thead>
                 <tr>
                     <th>ID Khuyến Mãi</th>
-                    <th>Tên Khuyễn Mãi</th>
-                    <th>Giá Trị Khuyễn Mãi</th>
+                    <th>Tên Khuyến Mãi</th>
+                    <th>Giá Trị Khuyến Mãi (%)</th>
                     <th>Ngày Bắt Đầu</th>
                     <th>Ngày Kết Thúc</th>
                     <th>Trạng Thái</th>
@@ -66,17 +68,17 @@
                 </thead>
                 <tbody>
 
-                <tr th:each="khuyenmai : ${KhuyenMai}">
-                    <td th:text="${khuyenmai.idKM}"></td>
-                    <td th:text="${khuyenmai.tenKM}"></td>
-                    <td th:text="${khuyenmai.giaTriKhuyenMai}"></td>
-                    <td th:text="${khuyenmai.ngayBatDau}"></td>
-                    <td th:text="${khuyenmai.ngayKetThuc}"></td>
-                    <td th:text="${khuyenmai.trangThai}"></td>
+                <tr th:each="khuyenMai : ${KhuyenMai}">
+                    <td th:text="${khuyenMai.idKM}"></td>
+                    <td th:text="${khuyenMai.tenKM}"></td>
+                    <td th:text="${khuyenMai.giaTriKhuyenMai}"></td>
+                    <td th:text="${#dates.format(khuyenMai.ngayBatDau, 'dd/MM/yyyy')}"></td>
+                    <td th:text="${#dates.format(khuyenMai.ngayKetThuc, 'dd/MM/yyyy')}"></td>
+                    <td th:text="${khuyenMai.trangThai == 1 ? 'Hoạt động' : 'Ngừng'}"></td>
 
                     <td>
-                        <a th:href="@{/edit(idHD=${khuyenmai.idKM})}" class="btn btn-primary">Sửa</a>
-                        <a th:href="@{/delete(idHD=${khuyenmai.idKM})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?');">Xóa</a>
+                        <a th:href="@{/editkhuyenmai(idKM=${khuyenMai.idKM})}" class="btn btn-primary">Sửa</a>
+                        <a th:href="@{/deleteKhuyenMai(idKM=${khuyenMai.idKM})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?');">Xóa</a>
                     </td>
                 </tr>
 
