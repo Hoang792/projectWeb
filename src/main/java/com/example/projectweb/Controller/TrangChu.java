@@ -19,6 +19,9 @@ import java.util.Optional;
 
 @Controller
 public class TrangChu {
+
+
+
     @Autowired
     private MauService mauService;
     @Autowired
@@ -35,22 +38,25 @@ public class TrangChu {
     private final String UPLOAD_DIR = "src/main/resources/image/";
 
     //hiện sp bên trang quản lý sp
-    @GetMapping("/quanlysanpham")
+    /* @GetMapping("/quanlysanpham")
     public String sanpham(Model model) {
         List<sanphamchitiet> sanpham;
         model.addAttribute("sanpham", sanPhamChitietService.findAll());
         return "quanlysanpham";
-    }
+    } */
 
     @Autowired
     private thuonghieuService thuonghieuservice;
 
     @GetMapping("/search")
-    public String searchPhones(@RequestParam("query") String query, Model model) {
+    public String searchSP(@RequestParam("query") String query, Model model) {
         List<sanphamchitiet> sp = sanPhamChitietService.SearchSP(query);
         model.addAttribute("sanpham", sp);
         return "index";
     }
+
+
+
 
     /* @GetMapping("/giohang")
     public String giohang(Model model) {

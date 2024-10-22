@@ -79,6 +79,8 @@ public class GiohangControllor {
 
         model.addAttribute("totalPrice", giohangservice.getCart().getTotalPrice());
 
+
+
         List<thuonghieu> ThuongHieu;
         model.addAttribute("ThuongHieu", ThuonghieuService.getAllThuongHieus());
 
